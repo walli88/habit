@@ -9,13 +9,14 @@ Template.home.events({
         , password = t.find('#login-password').value;
         console.log(email);
         console.log(password);
-    Accounts.createUser({email: email, password : password}, function(err){
-          if (err) {
-            console.log("success")
-          } else {
-            console.log("error")
-          }
-        });
+
+    Meteor.call('ATCreateUserServer', {
+    profile: {},
+    email: email,
+    password: Accounts._hashPassword(password)
+    }, function(err) {
+      console.log(err)
+    });
       return false;
   }
 });
