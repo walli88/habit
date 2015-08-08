@@ -33,10 +33,17 @@ Template.home.events({
     });
       return false;
   },
-  'change #habit-picker': function(evt) {
-  var habitValue = $(evt.target).val();
+  'change #habit-picker': function(e) {
+  var habitValue = $(e.target).val();
   Session.set("habitCat", habitValue);
-  }
+  },
+  'click #trait-button': function(e, t) {
+    if($(e.currentTarget).hasClass("active")) {
+      $(e.currentTarget).removeClass("active")
+    } else {
+      $(e.currentTarget).addClass("active")
+    }
+  },
 
 });
 
