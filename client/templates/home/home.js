@@ -7,7 +7,12 @@ Template.home.helpers({
         return ["Healthy", "Organized", "Social", "Confident", "Thrifty"]
     },
     habits: function(){
-      return Habits.find({});
+      if(Session.get("habitCat")) {
+        return Habits.find({'habit' : Session.get("habitCat")});
+      } else
+      {
+        return Habits.find({});
+      }
     }
 
 });
@@ -19,7 +24,6 @@ Template.home.events({
         , password = t.find('#login-password').value;
         console.log(email);
         console.log(password);
-
     Meteor.call('ATCreateUserServer', {
     profile: {},
     email: email,
@@ -28,6 +32,11 @@ Template.home.events({
       console.log(err)
     });
       return false;
+  },
+  'change #habit-picker': function(evt) {
+  var habitValue = $(evt.target).val();
+  Session.set("habitCat", habitValue);
   }
+
 });
 

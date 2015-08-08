@@ -5,7 +5,7 @@
     </div>
         <div class="col-md-4 col-md-offset-4">
         <p>
-          <select class="form-control">
+          <select class="form-control" id="habit-picker">
             <option disabled="disabled" selected="selected">I want to be:</option>
             {{#each habitsCat}}
               <option value="{{this}}">{{this}}</option>
@@ -13,7 +13,7 @@
           </select>
         </p>
         <p>
-          <div class="list-group vcenter">
+          <div class="list-group">
             {{#each habits}}
               <button type="button" class="list-group-item btn-block">{{trait}}</button>
             {{/each}}
