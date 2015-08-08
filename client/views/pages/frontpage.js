@@ -4,12 +4,10 @@ Template.frontpage.rendered = function() {
 
 Template.frontpage.helpers({
     traits: function(){
-        console.log("hello");
         return ["Healthy", "Organized", "Social", "Confident", "Thrifty"]; // If this is hardcoded, if there's a new category, it won't appear
     },
  
     habits: function(){
-      console.log("hello");
       if( getTrait() ) {
         return Habits.find( {'trait' : getTrait() } );
       } else {
