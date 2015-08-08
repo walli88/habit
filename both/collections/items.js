@@ -1,5 +1,4 @@
 Items = new Mongo.Collection('items');
-Habits = new Mongo.Collection('habits');
 
 Items.helpers({
 

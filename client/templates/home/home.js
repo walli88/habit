@@ -2,6 +2,16 @@ Template.home.rendered = function() {
 
 };
 
+Template.home.helpers({
+    habitsCat: function(){
+        return ["Healthy", "Organized", "Social", "Confident", "Thrifty"]
+    },
+    habits: function(){
+      return Habits.find({});
+    }
+
+});
+
 Template.home.events({
     'submit .register-form' : function(e, t){
       e.preventDefault();

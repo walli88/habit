@@ -1,9 +1,24 @@
 <template name="home">
   <div class="template-home">
     <div class="page-header text-center">
-      <h1>Welcome to habit helper</h1>
+      <h1>Welcome to Habit.io</h1>
     </div>
         <div class="col-md-4 col-md-offset-4">
+        <p>
+          <select class="form-control">
+            <option disabled="disabled" selected="selected">I want to be:</option>
+            {{#each habitsCat}}
+              <option value="{{this}}">{{this}}</option>
+            {{/each}}
+          </select>
+        </p>
+        <p>
+          <div class="list-group vcenter">
+            {{#each habits}}
+              <button type="button" class="list-group-item btn-block">{{trait}}</button>
+            {{/each}}
+          </div>
+        </p>
         <form class="register-form">
                 <p>Email: <input type="email" class="form-control" id="login-email"></p>
                 <p>Password: <input type="password" class="form-control" id="login-password"></p>
