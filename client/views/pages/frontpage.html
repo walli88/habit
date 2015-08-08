@@ -1,12 +1,31 @@
 <template name="frontpage">
   <div class="container">
-    <div class="jumbotron">
-      <h1>Meteor-skeleton</h1>
-      <p>A boilerplate for Meteor - giving you a simple and more organized way to create projects.</p>
-      <p>It comes with a complete collection sample including publications, subscriptions and CRUD functionality. Routes, views and some nice helpers are also included.</p>
-      <p>
-        <a class="btn btn-lg btn-primary" href="https://github.com/kjetilhau/meteor-skeleton" role="button">Check it out at Github</a>
-      </p>
+    <div class="template-home">
+    <div class="page-header text-center">
+      <h1>Welcome to Habit.io</h1>
     </div>
+        <div class="col-md-4 col-md-offset-4">
+        <p>
+          <select class="form-control" id="trait-picker">
+            <option disabled="disabled" selected="selected">I want to be:</option>
+            {{#each traits}}
+              <option value="{{this}}">{{this}}</option>
+            {{/each}}
+          </select>
+        </p>
+        <p>
+          <div class="list-group">
+            {{#each habits}}
+              <button type="button" class="list-group-item btn-block" id="habit-button">{{habit}}</button>
+            {{/each}}
+          </div>
+        </p>
+        <form class="register-form">
+                <p>Email: <input type="email" class="form-control" id="login-email"></p>
+                <p>Password: <input type="password" class="form-control" id="login-password"></p>
+                <p><input type="submit" class="btn btn-default"  id="login-button" value="Register"></p>
+        </form>
+    </div>
+  </div>
   </div> <!-- /container -->
 </template>

@@ -19,4 +19,9 @@ if (Documents.find().count() === 0) {
     content: "Lorem ipsum, herp derp durr."
   });
 
+  Documents.insert({
+    title: "Burd",
+    content: "Lorem ipsum, herp derp durr."
+  });
+
 }
