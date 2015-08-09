@@ -24,3 +24,4 @@ percolate:synced-cron
 cmather:handlebars-server
 accounts-ui
 email
+ian:accounts-ui-bootstrap-3
