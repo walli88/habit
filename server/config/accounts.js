@@ -25,4 +25,5 @@ Accounts.onCreateUser(function(options, user) {
 
   }, 2 * 1000);
   return user;
+
 });
