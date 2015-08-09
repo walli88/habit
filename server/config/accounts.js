@@ -11,8 +11,8 @@ Accounts.onCreateUser(function(options, user) {
       user.profile['currentHabits'] = savedHabits;
 
       var str = "Here are the habits that you chose:"
-      user.profile.currentHabits.forEach ( function (habit) {
-      	str = str.concat("<br><br>", habit);
+      user.profile.currentHabits.forEach ( function (habit_id) {
+      	str = str.concat("<br><br>", Habits.find(habit_id).fetch()[0].habit);
       	str = str.concat("<br><br>", "Were you able to do them today? :)");
       })
       
