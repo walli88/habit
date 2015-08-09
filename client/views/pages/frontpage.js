@@ -24,9 +24,7 @@ Template.frontpage.events({
       , password = t.find('#login-password').value; /* Eventually, this should be replaced with default loginButtons for security purposes but with custom template. See here https://meteorhacks.com/extending-meteor-accounts */
       
     var habits = getSelectedHabits();
-    console.log(email);
-    console.log(password);
-
+    
     Accounts.createUser ({
       email: email,
       password: password, // Need to generate public/private key to decrypt
@@ -36,7 +34,9 @@ Template.frontpage.events({
       }
     }, function ( err ) {
       if (err) console.log(err);
-      else console.log('success');
+      else {
+        console.log('success');
+      };
     })
 
     return false;

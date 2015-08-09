@@ -17,3 +17,7 @@ twbs:bootstrap
 momentjs:moment
 accounts-password
 less
+accounts-facebook
+accounts-google
+accounts-ui
+percolate:synced-cron
