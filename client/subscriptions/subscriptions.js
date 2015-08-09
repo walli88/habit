@@ -4,4 +4,6 @@
 
 Meteor.subscribe ("habits", function () { 
 	return Habits.find();
-})
+});
+
+Meteor.subscribe("directory");
