@@ -3,6 +3,7 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 # Aldeed packages help with database/form validation
+# handlebars-server needed to render HTML templates on the server
 
 # Atmosphere
 
@@ -20,4 +21,7 @@ less
 accounts-facebook
 accounts-google
 percolate:synced-cron
+cmather:handlebars-server
+accounts-ui
+email
 ian:accounts-ui-bootstrap-3

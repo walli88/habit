@@ -24,14 +24,12 @@ Template.frontpage.events({
       , password = t.find('#login-password').value; /* Eventually, this should be replaced with default loginButtons for security purposes but with custom template. See here https://meteorhacks.com/extending-meteor-accounts */
       
     var habits = getSelectedHabits();
-    
+
+    Meteor.call ( 'saveSelectedHabits', habits );
+
     Accounts.createUser ({
-      email: email,
-      password: password, // Need to generate public/private key to decrypt
-      profile: {
-        currentHabits: habits
-        //add name here and to form
-      }
+      email:email,
+      password:password,
     }, function ( err ) {
       if (err) console.log(err);
       else {
