@@ -19,5 +19,5 @@ accounts-password
 less
 accounts-facebook
 accounts-google
-accounts-ui
 percolate:synced-cron
+ian:accounts-ui-bootstrap-3
