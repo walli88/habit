@@ -23,3 +23,4 @@ accounts-google
 percolate:synced-cron
 cmather:handlebars-server
 accounts-ui
+email
