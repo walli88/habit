@@ -5,9 +5,16 @@
       <h1>Welcome to Habit.io</h1>
     </div>
         <div class="col-md-4 col-md-offset-4">
+        I want to be:
+        <p>
+          <div class="list-group">
+            {{#each habitsSelected}}
+              <button type="button" class="list-group-item btn-block active" id="habit-button">{{habit}}</button>
+            {{/each}}
+          </div>
+        </p>
         <p>
           <select class="form-control" id="trait-picker">
-            <option disabled="disabled" selected="selected">I want to be:</option>
             {{#each traits}}
               <option value="{{this}}">{{this}}</option>
             {{/each}}
