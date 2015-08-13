@@ -1,5 +1,6 @@
 Template.frontpage.rendered = function() {
 setTrait( "Healthy" );
+Session.set('selectedHabits',[])
 };
 
 Template.frontpage.helpers({
@@ -51,19 +52,23 @@ Template.frontpage.events({
   'change #trait-picker': function(e) {
     var trait = $(e.target).val();
     Session.keys
-    setTrait( trait );
+    setTrait(trait);
   },
 
   'click #habit-button': function(e, t) {
-    console.log(getSelectedHabits());
+
     var habit = Blaze.getData ( e.target ); // gets habit in object form
 
     if($(e.currentTarget).hasClass("active")) {
       removeSelectedHabits(habit);
       $(e.currentTarget).removeClass("active"); // changes CSS
     } else {
-      addSelectedHabits(habit)
-      $(e.currentTarget).addClass("active")
+      if(getSelectedHabits().length > 2) {
+        sAlert.error('You can add at most 3 habits', {offset: '0px', stack: false})
+      } else {
+        addSelectedHabits(habit)
+        $(e.currentTarget).addClass("active")
+      }
     }
   },
 
@@ -89,7 +94,6 @@ var setTrait = function ( trait ) {
 }
 
 var getSelectedHabits = function () {
-
   return Session.get('selectedHabits');
 }
 
@@ -107,17 +111,7 @@ var removeSelectedHabits = function(habit) {
 }
 
 var addSelectedHabits = function(habit) {
-  if (doSelectedHabitsExist()) {
-    var selectedHabits = getSelectedHabits();
-    console.log(!_.contains(selectedHabits,habit._id))
-    if(!_.contains(selectedHabits,habit._id)) {
-      selectedHabits.push(habit._id )
-      updateSelectedHabits(selectedHabits); // At some point we'll need to get rid of all sessions
-    }
-  } else {
-    var initHabit = [habit._id];
-    updateSelectedHabits(initHabit);
-  }
+    updateSelectedHabits(_.uniq(getSelectedHabits().concat(habit._id)));
 }
 
 
