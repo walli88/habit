@@ -25,9 +25,9 @@ if ( Habits.find().count() === 0 ) {
     });
 }
 
-if (UserHabits.find().count() === - ) {
+if (UserHabits.find().count() === 0 ) {
   UserHabits.insert({
     UserId : "asd32523",
-    TraitId " 23ssfd"
+    TraitId : " 23ssfd"
   })
 }
