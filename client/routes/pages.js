@@ -18,4 +18,9 @@ Router.map(function() {
     template: 'about'
   });
 
+  this.route('dashboard', {
+    path: '/dashboard',
+    template: 'dashboard'
+  });
+
 });

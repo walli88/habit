@@ -24,3 +24,10 @@ if ( Habits.find().count() === 0 ) {
       habit: 'Wash the dishes right after eating'
     });
 }
+
+if (UserHabits.find().count() === - ) {
+  UserHabits.insert({
+    UserId : "asd32523",
+    TraitId " 23ssfd"
+  })
+}

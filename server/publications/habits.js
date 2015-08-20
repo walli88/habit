@@ -2,7 +2,7 @@ Meteor.publish('habits', function () {
   return Habits.find();
 })
 
-Meteor.publish('habit', function(id) {
+Meteor.publish('habits', function(id) {
   return Habits.find(id);
 });
 
