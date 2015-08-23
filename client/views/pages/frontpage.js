@@ -34,8 +34,6 @@ Template.frontpage.events({
 
     var habits = getSelectedHabits();
 
-    Meteor.call ( 'saveSelectedHabits', habits );
-
     Accounts.createUser ({
       email:email,
       password:password,
@@ -45,9 +43,20 @@ Template.frontpage.events({
         console.log('success');
       };
     })
-
+    Meteor.call ( 'saveUserHabits', habits );
     return false;
   },
+
+
+/*
+TODO
+1. need to be able to add or remove habits so only 3 userHabits are active
+2. Deduplicate userHabits being added to
+*/
+  'click #submit-habits' : function(e, t){
+    Meteor.call ( 'saveUserHabits', getSelectedHabits());
+  },
+
 
   'change #trait-picker': function(e) {
     var trait = $(e.target).val();

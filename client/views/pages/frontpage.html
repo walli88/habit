@@ -11,13 +11,7 @@
 
         <div class="col-md-4 col-md-offset-4">
         I want to be:
-        <p>
-          <div class="list-group">
-            {{#each habitsSelected}}
-              <button type="button" class="list-group-item btn-block active" id="habit-button">{{habit}}</button>
-            {{/each}}
-          </div>
-        </p>
+
         <p>
           <select class="form-control" id="trait-picker">
             {{#each traits}}
@@ -27,17 +21,26 @@
         </p>
         <p>
           <div class="list-group">
+            {{#each habitsSelected}}
+              <button type="button" class="list-group-item btn-block active" id="habit-button">{{habit}}</button>
+            {{/each}}
+          </div>
+        </p>
+        <p>
+          <div class="list-group">
             {{#each habits}}
               <button type="button" class="list-group-item btn-block" id="habit-button">{{habit}}</button>
             {{/each}}
           </div>
         </p>
         {{#if currentUser}}
+        <!-- <p><button type="submit" class="btn btn-default" id="submit-habits">Submit</button></p> -->
+        <p><input type="submit" class="btn btn-default" id="submit-habits" value="Submit"></p>
         {{else}}
         <form class="register-form">
                 <p>Email: <input type="email" class="form-control" id="login-email"></p>
                 <p>Password: <input type="password" class="form-control" id="login-password"></p>
-                <p><input type="submit" class="btn btn-default"  id="login-button" value="Register"></p>
+                <p><input type="submit" class="btn btn-default" id="login-button" value="Register"></p>
         </form>
         {{/if}}
     </div>

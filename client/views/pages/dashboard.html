@@ -7,18 +7,29 @@
         <h1>Current habits</h1>
       </div>
       {{#each userHabits}}
-        <div class="post">
+        <div class="post col-md-8 col-md-offset-2">
           <!-- {{habit}} 0 -->
-          {{UserId}}
-              <div class="btn-group pull-right" data-toggle="buttons">
-                  <label class="btn btn-default">
-                      <input type="radio" id="yes"/>Yes
-                  </label>
-                  <label class="btn btn-default">
-                      <input type="radio" id="no"/>No
-                  </label>
-              </div>
-        </div>
+          <div class="col-md-6">
+            {{habit}}
+          </div>
+            <div class="pull-right">
+              <ul class="list-inline">
+                <li>
+                  Weekly count: <span class="badge"> {{ count }} </span>
+                </li>
+                <li>
+                  <div class="btn-group" data-toggle="buttons">
+                      <label class="btn btn-default">
+                          <input type="radio" id="yes"/>Yes
+                      </label>
+                      <label class="btn btn-default">
+                          <input type="radio" id="no"/>No
+                      </label>
+                  </div>
+                </li>
+            </ul>
+          </div>
+        </div> <!-- /post -->
       {{/each}}
     </div> <!-- /tempate-home -->
   </div> <!-- /container -->

@@ -15,9 +15,4 @@ Meteor.methods({
     return true;
   },
 
-  saveSelectedHabits: function ( habits ) {
-  	savedHabits = habits;
-  	console.log(savedHabits);
-  }
-
 });

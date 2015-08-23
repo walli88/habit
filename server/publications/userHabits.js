@@ -1,3 +1,3 @@
 Meteor.publish('UserHabits', function () {
-  return UserHabits.find();
+  return UserHabits.find({userId: this.userId});
 })
