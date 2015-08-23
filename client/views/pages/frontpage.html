@@ -32,11 +32,14 @@
             {{/each}}
           </div>
         </p>
+        {{#if currentUser}}
+        {{else}}
         <form class="register-form">
                 <p>Email: <input type="email" class="form-control" id="login-email"></p>
                 <p>Password: <input type="password" class="form-control" id="login-password"></p>
                 <p><input type="submit" class="btn btn-default"  id="login-button" value="Register"></p>
         </form>
+        {{/if}}
     </div>
   </div>
   </div> <!-- /container -->
