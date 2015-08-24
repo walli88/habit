@@ -15,10 +15,10 @@ Accounts.onCreateUser(function(options, user) {
       	str = str.concat("<br><br>", Habits.find(habit_id).fetch()[0].habit);
       	str = str.concat("<br><br>", "Were you able to do them today? :)");
       })
-      
+
       Meteor.call('scheduleMail', {
-          from: user.emails.address,
-          to: user.emails.address,
+          from: user.emails[0].address,
+          to: user.emails[0].address,
           subject: "Are you closer to who you want to be?",
           text: str
       })
