@@ -19,10 +19,22 @@
                 </li>
                 <li>
                   <div class="btn-group" data-toggle="buttons">
-                      <label class="btn btn-default">
-                          <input type="radio" id="yes"/>Yes
+<!--                     {{#if lastYes}}
+                      <label class="btn btn-default active">
+                      <input type="radio" id="yes"/>Yes
                       </label>
-                      <label class="btn btn-default">
+                    {{else}}
+                        <label class="btn btn-default">
+                        <input type="radio" id="yes"/>Yes
+                      </label>
+                    {{/if}} -->
+
+                      <label class="btn btn-default {{#if lastYes}} active {{/if}}">
+                      <input type="radio" id="yes"/>Yes
+                      </label>
+
+
+                      <label class="btn btn-default {{#unless lastYes}} active {{/unless}}">
                           <input type="radio" id="no"/>No
                       </label>
                   </div>
