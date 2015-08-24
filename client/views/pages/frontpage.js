@@ -9,7 +9,9 @@ Template.frontpage.helpers({
     },
 
     habits: function(){
-      if( getTrait() ) {
+       if( getTrait() ) {
+
+        console.log(getSelectedHabits());
         return Habits.find( {$and:[{'trait' : getTrait() }, {_id: {$nin: _.toArray(getSelectedHabits())}}]});
       } else {
         return;
@@ -17,11 +19,17 @@ Template.frontpage.helpers({
     },
 
     habitsSelected: function(){
-    if( getTrait() ) {
-      return Habits.find({_id: {$in: _.toArray(getSelectedHabits())}});
-    } else {
-      return;
-    }
+      // if (UserHabits.find()) {
+      //   return UserHabits.find();
+      // }
+      // else
+
+      if ( getTrait() ) {
+        console.log(getSelectedHabits());
+        return Habits.find({_id: {$in: _.toArray(getSelectedHabits())}});
+      } else {
+        return;
+      }
   }
 
 });
@@ -54,7 +62,10 @@ TODO
 2. Deduplicate userHabits being added to
 */
   'click #submit-habits' : function(e, t){
-    Meteor.call ( 'saveUserHabits', getSelectedHabits());
+    var habitsDiff = _.difference(getSessionHabits(), getUserHabits());
+    if(habitsDiff) {
+      Meteor.call ( 'saveUserHabits', habitsDiff);
+    }
   },
 
 
@@ -65,8 +76,10 @@ TODO
   },
 
   'click #habit-button': function(e, t) {
-
     var habit = Blaze.getData ( e.target ); // gets habit in object form
+    if (_.contains(getUserHabits(),habit._id)){
+      return;
+    }
 
     if($(e.currentTarget).hasClass("active")) {
       removeSelectedHabits(habit);
@@ -102,17 +115,21 @@ var setTrait = function ( trait ) {
   return Session.set ( 'trait', trait );
 }
 
-var getSelectedHabits = function () {
+var getUserHabits = function() {
+  return allUserHabits = UserHabits.find({},{fields: {'habitsId':1}}).map(function(p) { return p.habitsId });
+}
+
+var getSessionHabits = function() {
   return Session.get('selectedHabits');
+}
+
+var getSelectedHabits = function () {
+  return _.union(getUserHabits(),getSessionHabits());
 }
 
 var updateSelectedHabits = function ( newSelectedHabits ) {
   Session.set ( 'selectedHabits', newSelectedHabits );
   return newSelectedHabits;
-}
-
-var doSelectedHabitsExist = function () {
-  return !!getSelectedHabits();
 }
 
 var removeSelectedHabits = function(habit) {

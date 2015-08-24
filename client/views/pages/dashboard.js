@@ -14,4 +14,13 @@ TOOD
 */
 
 Template.dashboard.events({
+    'change #yes' : function(e) {
+        var userHabit = Blaze.getData(e.target);
+        Meteor.call('incUserHabitCount', this._id);
+    },
+    'change #no' : function(e) {
+        var userHabit = Blaze.getData(e.target);
+        Meteor.call('decUserHabitCount', this._id);
+    }
+
 });
