@@ -4,7 +4,10 @@
 
 
 //adds task to SyncedCron
-function addTask(id, details) {
+/*
+*/
+
+addTask = function (id, details) {
 
   SyncedCron.add({
     name: id,
@@ -20,7 +23,6 @@ function addTask(id, details) {
 }
 
 function sendMail ( details ) {
-
   Email.send({
     from: details.from,
       to: details.to,
