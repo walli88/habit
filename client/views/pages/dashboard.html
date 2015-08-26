@@ -1,7 +1,7 @@
 <template name="dashboard">
 
   <div class="container">
-
+    {{> sAlert}}
     <div class="template-home">
       <div class="page-header text-center">
         <h1>Today did you?</h1>
@@ -19,17 +19,7 @@
                 </li>
                 <li>
                   <div class="btn-group" data-toggle="buttons">
-<!--                     {{#if lastYes}}
-                      <label class="btn btn-default active">
-                      <input type="radio" id="yes"/>Yes
-                      </label>
-                    {{else}}
-                        <label class="btn btn-default">
-                        <input type="radio" id="yes"/>Yes
-                      </label>
-                    {{/if}} -->
-
-                      <label class="btn btn-default {{#if lastYes}} active {{/if}}">
+                      <label class="btn btn-default {{#if lastYes}} active {{/if}}" id="showBtn">
                       <input type="radio" id="yes"/>Yes
                       </label>
 
