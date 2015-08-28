@@ -17,6 +17,7 @@ Accounts.onCreateUser(function(options, user) {
       })
 
       Meteor.call('scheduleMail', {
+          user_id: user._id,
           from: user.emails[0].address,
           to: user.emails[0].address,
           subject: "Are you closer to who you want to be?",

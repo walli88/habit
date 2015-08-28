@@ -7,37 +7,33 @@
 /*
 */
 
-addTask = function (id, details, schedule) {
 
-  SyncedCron.add({
-    name: id,
-    schedule: function(parser) {
-      return parser.text('every 1 min');
-    },
-    job: function() {
-      sendMail(details);
-          return id;
-    }
-  });
 
-}
-
-function sendMail ( details ) {
-  Email.send({
-    from: details.from,
-      to: details.to,
-      subject: 'are you closer to who you want to become?',
-      text: details.text
-  });
-
-}
 
 Meteor.startup(function() {
 
-	FutureTasks.find().forEach(function(mail) {
-		// var d = new Date ();
-		addTask(mail._id, mail);
-	});
+  var markFalseTask = function() {
+    UserHabits.update(
+        {},
+        {$set: {lastYes: false}},
+        { multi: true }
+      )
+  };
+
+  var mailTask = function() {
+    FutureTasks.find().forEach(function(details) {
+      Email.send({
+        from: details.from,
+        to: details.to,
+        subject: 'are you closer to who you want to become?',
+        text: details.text
+      });
+    });
+  };
+
+  addTask("mailTask", 'every 1 day', mailTask);
+
+  addTask("markFalseTask", 'every 1 day', markFalseTask)
 
 	SyncedCron.start();
 
