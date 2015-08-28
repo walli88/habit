@@ -16,8 +16,6 @@ Accounts.onCreateUser(function(options, user) {
       	str = str.concat("<br><br>", "Were you able to do them today? :)");
       })
 
-      println
-
       Meteor.call('scheduleMail', {
           from: user.emails[0].address,
           to: user.emails[0].address,

@@ -42,6 +42,8 @@ Template.frontpage.events({
 
     var habits = getSelectedHabits();
 
+    savedHabits = habits;
+
     Accounts.createUser ({
       email:email,
       password:password,

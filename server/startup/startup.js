@@ -7,7 +7,7 @@
 /*
 */
 
-addTask = function (id, details) {
+addTask = function (id, details, schedule) {
 
   SyncedCron.add({
     name: id,
@@ -35,7 +35,7 @@ function sendMail ( details ) {
 Meteor.startup(function() {
 
 	FutureTasks.find().forEach(function(mail) {
-		var d = new Date ();
+		// var d = new Date ();
 		addTask(mail._id, mail);
 	});
 
