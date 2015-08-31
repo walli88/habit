@@ -49,6 +49,7 @@ Template.frontpage.events({
         else {;
           Meteor.call ( 'saveUserHabits', habits );
           Meteor.call('scheduleMail', {
+          userId: Meteor.user()._id,
           from: Meteor.user().emails[0].address,
           to: Meteor.user().emails[0].address,
           subject: "Are you closer to who you want to be?",
@@ -92,7 +93,7 @@ TODO
       removeSelectedHabits(habit);
       $(e.currentTarget).removeClass("active"); // changes CSS
     } else {
-      if(getSelectedHabits().length > 2) {
+      if(getSelectedHabits().length > 3) {
         sAlert.error('You can add at most 3 habits', {offset: '0px', stack: false})
       } else {
         addSelectedHabits(habit)

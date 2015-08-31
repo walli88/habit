@@ -22,9 +22,11 @@ Meteor.startup(function() {
 
   var mailTask = function() {
     FutureTasks.find().forEach(function(details) {
+    var habits_array = UserHabits.find({userId: details.userId}, {fields: {'habit':1, 'count':1}}).fetch()
+    var messageString = "Here is your habits progress:"
+    + _.map(habits_array, function(s) { return "<br><br>" + s.habit + " : " + s.count + "/7"}).join();
 
-    var habits_array = _(UserHabits.find({}, {fields: {'habit':1, 'count':1}}).fetch())
-    var messageString = "Here is your habits progress:" +  _.map(habits_array.pluck("habit"), function(s){ return "<br><br>" + s}).join();
+    console.log(messageString)
 
       Email.send({
         from: details.from,
