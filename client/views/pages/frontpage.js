@@ -118,7 +118,7 @@ var setTrait = function ( trait ) {
 }
 
 var getUserHabits = function() {
-  return allUserHabits = UserHabits.find({},{fields: {'habitsId':1}}).map(function(p) { return p.habitsId });
+  return allUserHabits = _(UserHabits.find({},{fields: {'habitsId':1}}).fetch()).pluck("habitsId");
 }
 
 var getSessionHabits = function() {

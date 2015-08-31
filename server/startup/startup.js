@@ -21,15 +21,16 @@ Meteor.startup(function() {
   };
 
   var mailTask = function() {
-
     FutureTasks.find().forEach(function(details) {
 
+    var habits_array = _(UserHabits.find({}, {fields: {'habit':1}}).fetch()).pluck("habit")
+    var messageString = "Here is your habits progress:" +  _.map(habits_array, function(s){ return "<br><br>" + s}).join();
 
       Email.send({
         from: details.from,
         to: details.to,
         subject: 'are you closer to who you want to become?',
-        html: details.text
+        html: messageString
       });
     });
   };
