@@ -11,7 +11,6 @@ Template.frontpage.helpers({
     habits: function(){
        if( getTrait() ) {
 
-        console.log(getSelectedHabits());
         return Habits.find( {$and:[{'trait' : getTrait() }, {_id: {$nin: _.toArray(getSelectedHabits())}}]});
       } else {
         return;
@@ -25,7 +24,6 @@ Template.frontpage.helpers({
       // else
 
       if ( getTrait() ) {
-        console.log(getSelectedHabits());
         return Habits.find({_id: {$in: _.toArray(getSelectedHabits())}});
       } else {
         return;
@@ -41,19 +39,26 @@ Template.frontpage.events({
       , password = t.find('#login-password').value; /* Eventually, this should be replaced with default loginButtons for security purposes but with custom template. See here https://meteorhacks.com/extending-meteor-accounts */
 
     var habits = getSelectedHabits();
-
     savedHabits = habits;
+    if (Meteor.user() === null) {
+      Accounts.createUser ({
+        email:email,
+        password:password,
+      }, function ( err ) {
+        if (err) console.log(err);
+        else {;
+          Meteor.call ( 'saveUserHabits', habits );
+          Meteor.call('scheduleMail', {
+          from: Meteor.user().emails[0].address,
+          to: Meteor.user().emails[0].address,
+          subject: "Are you closer to who you want to be?",
+      })
 
-    Accounts.createUser ({
-      email:email,
-      password:password,
-    }, function ( err ) {
-      if (err) console.log(err);
-      else {
-        console.log('success');
-      };
-    })
-    Meteor.call ( 'saveUserHabits', habits );
+        };
+      })
+    } else {
+      Meteor.call ( 'saveUserHabits', habits );
+    }
     return false;
   },
 

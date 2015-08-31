@@ -35,7 +35,9 @@ Meteor.startup(function() {
     });
   };
 
-  addTask("mailTask", 'at 00:00 am', mailTask); // every 1 minute
+  // addTask("mailTask", 'at 00:00 am', mailTask);
+  addTask("mailTask", 'every 1 minute', mailTask);
+
 
   addTask("markFalseTask", 'at 00:00 am', markFalseTask)
 
