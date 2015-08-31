@@ -23,8 +23,8 @@ Meteor.startup(function() {
   var mailTask = function() {
     FutureTasks.find().forEach(function(details) {
 
-    var habits_array = _(UserHabits.find({}, {fields: {'habit':1}}).fetch()).pluck("habit")
-    var messageString = "Here is your habits progress:" +  _.map(habits_array, function(s){ return "<br><br>" + s}).join();
+    var habits_array = _(UserHabits.find({}, {fields: {'habit':1, 'count':1}}).fetch())
+    var messageString = "Here is your habits progress:" +  _.map(habits_array.pluck("habit"), function(s){ return "<br><br>" + s}).join();
 
       Email.send({
         from: details.from,
@@ -35,8 +35,8 @@ Meteor.startup(function() {
     });
   };
 
-  // addTask("mailTask", 'at 00:00 am', mailTask);
-  addTask("mailTask", 'every 1 minute', mailTask);
+  addTask("mailTask", 'at 00:00 am', mailTask);
+  // addTask("mailTask", 'every 1 minute', mailTask);
 
 
   addTask("markFalseTask", 'at 00:00 am', markFalseTask)
