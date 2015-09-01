@@ -24,7 +24,9 @@ Meteor.startup(function() {
     FutureTasks.find().forEach(function(details) {
     var habits_array = UserHabits.find({userId: details.userId}, {fields: {'habit':1, 'count':1}}).fetch()
     var messageString = "Here is your habits progress:"
-    + _.map(habits_array, function(s) { return "<br><br>" + s.habit + " : " + s.count + "/7"}).join();
+    + _.map(habits_array, function(s) { return "<br><br>" + s.habit + " : " + s.count + "/7"}).join()
+    + "<br><br>Update your progress here: http://habitio.meteor.com/dashboard";
+
 
     console.log(messageString)
 
@@ -37,8 +39,8 @@ Meteor.startup(function() {
     });
   };
 
-  addTask("mailTask", 'at 00:00 am', mailTask);
-  // addTask("mailTask", 'every 1 minute', mailTask);
+  // addTask("mailTask", 'at 00:00 am', mailTask);
+  addTask("mailTask", 'every 1 minute', mailTask);
 
 
   addTask("markFalseTask", 'at 00:00 am', markFalseTask)
