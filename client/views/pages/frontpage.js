@@ -47,7 +47,7 @@ Template.frontpage.events({
       }, function ( err ) {
         if (err) console.log(err);
         else {;
-          Meteor.call ( 'saveUserHabits', habits );
+          Meteor.call( 'saveUserHabits', habits );
           Meteor.call('scheduleMail', {
           userId: Meteor.user()._id,
           from: Meteor.user().emails[0].address,
@@ -72,7 +72,7 @@ TODO
   'click #submit-habits' : function(e, t){
     var habitsDiff = _.difference(getSessionHabits(), getUserHabits());
     if(habitsDiff) {
-      Meteor.call ( 'saveUserHabits', habitsDiff);
+      Meteor.call('saveUserHabits', habitsDiff);
     }
   },
 
@@ -86,6 +86,19 @@ TODO
   'click #habit-button': function(e, t) {
     var habit = Blaze.getData ( e.target ); // gets habit in object form
     if (_.contains(getUserHabits(),habit._id)){
+          new Confirmation({
+          message: "Are you sure you want to remove a habit you're currently working on?\nThis will remove it from your dashboard.",
+          title: "Giving up?!?!",
+          cancelText: "Cancel",
+          okText: "Ok",
+          success: true // wether the button should be green or red
+          }, function (ok) {
+              if (ok) {
+                Meteor.call('deleteUserHabit', habit._id);
+                removeSelectedHabits(habit);
+              } else {
+              }
+          });
       return;
     }
 
