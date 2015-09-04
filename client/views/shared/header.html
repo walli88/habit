@@ -14,8 +14,11 @@
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li class="{{active 'frontpage'}}"><a href="{{pathFor 'frontpage'}}">Habits</a></li>
+          {{#if currentUser}}
           <li class="{{active 'dashboard'}}"><a href="{{pathFor 'dashboard'}}">Dashboard</a></li>
           <li class="{{active 'newhabit'}}"><a href="{{pathFor 'newhabit'}}">New Habit</a></li>
+          {{/if}}
+
         </ul>
         <ul class="nav navbar-nav navbar-right">
             {{> loginButtons}}
