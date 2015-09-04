@@ -1,10 +1,7 @@
 Meteor.publish('habits', function () {
-  return Habits.find();
+    // return Habits.find();
+  return Habits.find({$or:[{userId: this.userId},{userId: "0"}]});
 })
-
-Meteor.publish('habits', function(id) {
-  return Habits.find(id);
-});
 
 
 //For temporarily being able to access all users from client. Get rid of this in production.

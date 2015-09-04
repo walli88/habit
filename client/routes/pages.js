@@ -23,4 +23,9 @@ Router.map(function() {
     template: 'dashboard'
   });
 
+  this.route('newhabit', {
+    path: '/newhabit',
+    template: 'newhabit'
+  });
+
 });

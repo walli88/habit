@@ -10,5 +10,4 @@ Meteor.subscribe ("UserHabits", function () {
     return UserHabits.find();
 });
 
-
 Meteor.subscribe("directory");

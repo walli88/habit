@@ -1,0 +1,2 @@
+Template.newhabit.rendered = function() {
+};
