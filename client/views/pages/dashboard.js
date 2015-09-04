@@ -17,7 +17,6 @@ Template.dashboard.events({
     'change #yes' : function(e,t) {
         e.preventDefault();
         var userHabit = Blaze.getData(e.target);
-        console.log($(e.target).parent());
         Meteor.call('incUserHabitCount', this._id);
 
     },

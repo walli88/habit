@@ -21,12 +21,12 @@
                 <li>
                   <div class="btn-group" data-toggle="buttons">
                       <label class="btn btn-default {{#if lastYes}} active {{/if}}" id="showBtn">
-                      <input type="radio" id="yes"/>Yes
+                      <input type="radio" checked="{{#if lastYes}} checked {{/if}}" id="yes"/>Yes
                       </label>
 
 
                       <label class="btn btn-default {{#unless lastYes}} active {{/unless}}">
-                          <input type="radio" id="no"/>No
+                          <input type="radio" checked="{{#if lastYes}} checked {{/if}}" id="no"/>No
                       </label>
                   </div>
                 </li>
