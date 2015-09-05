@@ -34,6 +34,41 @@
           </div>
         </div> <!-- /post -->
       {{/each}}
+        <script>
+$.getScript('http://arshaw.com/js/fullcalendar-1.6.4/fullcalendar/fullcalendar.min.js',function(){
+
+  var date = new Date();
+  var d = date.getDate();
+  var m = date.getMonth();
+  var y = date.getFullYear();
+
+  $('#calendar').fullCalendar({
+    header: {
+      left: 'prev,next today',
+      center: 'title',
+      right: ''
+    },
+    editable: true,
+    events: [
+      {
+        title: 'Drink Water',
+        start: new Date(y, m, d-5),
+        end: new Date(y, m, d-2)
+      },
+      {
+        title: 'Call my friends',
+        start: new Date(y, m, d-3),
+        end: new Date(y, m, d-1)
+      },
+    ]
+  });
+})
+</script>
+
+<div class="container">
+    <hr>
+  <div id="calendar"></div>
+</div>
     </div> <!-- /tempate-home -->
   </div> <!-- /container -->
 </template>
