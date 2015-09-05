@@ -1,6 +1,6 @@
 Template.frontpage.rendered = function() {
-setTrait( "Healthy" );
-Session.set('selectedHabits',[])
+  setTrait( "Healthy" );
+  Session.set('selectedHabits',[])
 };
 
 Template.frontpage.helpers({
@@ -85,6 +85,12 @@ TODO
 
   'click #habit-button': function(e, t) {
     var habit = Blaze.getData ( e.target ); // gets habit in object form
+    
+    //sets text box value
+    //TODO need to submit from the text value (see 'submit')
+    $('#habitText').val(habit.habit);
+
+
     if (_.contains(getUserHabits(),habit._id)){
           new Confirmation({
           message: "Are you sure you want to remove a habit you're currently working on?\nThis will remove it from your dashboard.",
