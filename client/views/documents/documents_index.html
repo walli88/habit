@@ -1,25 +1,23 @@
 <template name="documentsIndex">
-  <div class="row">
+  <div class="row add-padding-top">
     <div class="col-md-12">
-      <h1>Documents</h1>
-      <a class="btn btn-primary" href="{{pathFor 'documentNew'}}" role="button">New document</a>
+      <h1>Daily gratitude journal</h1>
+      <a class="btn btn-primary" href="{{pathFor 'documentNew'}}" role="button">New journal entry</a>
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>Title</th>
-            <th>Content</th>
-            <th>Updated</th>
-            <th>Created</th>
+            <th>On this date</th>
+            <th>I'm gratful for</th>
+            <th>because...</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {{#each documents}}
           <tr>
+            <td>{{showPrettyTimestamp createdAt}}</td>
             <td><a href="{{pathFor 'documentShow'}}">{{title}}</a></td>
             <td>{{content}}</td>
-            <td>{{showTimeAgo updatedAt}}</td>
-            <td>{{showPrettyTimestamp createdAt}}</td>
             <td>
               <a class="btn btn-xs btn-default" href="{{pathFor 'documentEdit'}}" role="button">Edit</a>
               <a class="btn btn-xs btn-danger delete-document" href="#" role="button">Delete</a>
