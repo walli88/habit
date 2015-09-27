@@ -1,0 +1,37 @@
+<template name="habits">
+  <div class="container add-padding-top">
+    {{> sAlert}}
+    <div class="template-home">
+
+    <div class="page-header text-center">
+      <h1>Welcome to Habit.io</h1>
+
+    </div>
+
+        <div class="col-md-4 col-md-offset-4">
+        I want to be:
+        <p>
+          <select class="form-control" id="trait-picker">
+            {{#each traits}}
+              <option value="{{this}}">{{this}}</option>
+            {{/each}}
+          </select>
+        </p>
+        <p>
+          <div class="list-group">
+            {{#each habitsSelected}}
+              <button type="button" class="list-group-item btn-block active" id="habit-button">{{habit}}</button>
+            {{/each}}
+          </div>
+        </p>
+        <p>
+          <div class="list-group">
+            {{#each habits}}
+              <button type="button" class="list-group-item btn-block" id="habit-button">{{habit}}</button>
+            {{/each}}
+          </div>
+        </p>
+    </div>
+  </div>
+  </div> <!-- /container -->
+</template>

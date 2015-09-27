@@ -1,48 +1,144 @@
 <template name="frontpage">
 
-  <div class="container">
-    {{> sAlert}}
-    <div class="template-home">
+    <div class="intro-header">
+        <div class="container">
 
-    <div class="page-header text-center">
-      <h1>Welcome to Habit.io</h1>
-
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        <h1>Habit.io</h1>
+                        <h3>Become a better you</h3>
+                        <hr class="intro-divider">
+                        <div class="col-md-4 col-md-offset-4 text-left">
+                          I want to be:
+                          <p>
+                            <select class="form-control" id="trait-picker">
+                              {{#each traits}}
+                                <option value="{{this}}">{{this}}</option>
+                              {{/each}}
+                            </select>
+                          </p>
+                          <p>
+                            <div class="list-group">
+                              {{#each habitsSelected}}
+                                <button type="button" class="list-group-item btn-block active" id="habit-button">{{habit}}</button>
+                              {{/each}}
+                            </div>
+                          </p>
+                          <p>
+                            <div class="list-group">
+                              {{#each habits}}
+                                <button type="button" class="list-group-item btn-block" id="habit-button">{{habit}}</button>
+                              {{/each}}
+                            </div>
+                          </p>
+                          {{#if currentUser}}
+                          <!-- <p><button type="submit" class="btn btn-default" id="submit-habits">Submit</button></p> -->
+                          <p><input type="submit" class="btn btn-default" id="submit-habits" value="Submit"></p>
+                          {{else}}
+                          <form class="register-form">
+                                  <p>Email: <input type="email" class="form-control" id="login-email"></p>
+                                  <p>Password: <input type="password" class="form-control" id="login-password"></p>
+                                  <p><input type="submit" class="btn btn-default" id="login-button" value="Register"></p>
+                          </form>
+                          {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
     </div>
 
-        <div class="col-md-4 col-md-offset-4">
-        I want to be:
-        <p>
-          <select class="form-control" id="trait-picker">
-            {{#each traits}}
-              <option value="{{this}}">{{this}}</option>
-            {{/each}}
-          </select>
-        </p>
-        <p>
-          <div class="list-group">
-            {{#each habitsSelected}}
-              <button type="button" class="list-group-item btn-block active" id="habit-button">{{habit}}</button>
-            {{/each}}
+
+    <div class="content-section-b">
+    <div class="container">
+            <div class="row text-center row-centered">
+                <h1 class="intro-line-text">3 steps to become a better you</h1>
+            </div>
+            <div class="row row-centered margin-lr">
+
+                <div class="col-md-4 col-sm-8 col-xs-8 col-centered">
+                    <img class="img-responsive center-block" src="https://s3.amazonaws.com/habitio/noun_1759.svg" alt="" height="100" width="100">
+                    <div align="center">
+                        <h3 class="section-heading-light">Daily Gratitude Journal</h3>
+                        <p class="lead-white">Reflect on something you're grateful everyday</p>
+                    </div>
+                </div>
+<!--  -->
+
+                <div class="col-md-4 col-sm-8 col-xs-8 col-centered">
+                    <img class="img-responsive center-block" src="https://s3.amazonaws.com/habitio/todo3.svg" alt="" height="100" width="100">
+                    <div align="center">
+                        <h3 class="section-heading-light">Goal Setting</h3>
+                        <p class="lead-white">Write down weekly goals and track your progress</p>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4 col-sm-8 col-xs-8 col-centered">
+                    <img class="img-responsive center-block" src="https://s3.amazonaws.com/habitio/noun_6770.svg" alt="" height="100" width="100">
+                    <div align="center">
+                        <h3 class="section-heading-light">Self examination</h3>
+                        <p class="lead-white">Answer some thoughtful questions about your goals</p>
+                    </div>
+                </div>
+            </div>
           </div>
-        </p>
-        <p>
-          <div class="list-group">
-            {{#each habits}}
-              <button type="button" class="list-group-item btn-block" id="habit-button">{{habit}}</button>
-            {{/each}}
-          </div>
-        </p>
-        {{#if currentUser}}
-        <!-- <p><button type="submit" class="btn btn-default" id="submit-habits">Submit</button></p> -->
-        <p><input type="submit" class="btn btn-default" id="submit-habits" value="Submit"></p>
-        {{else}}
-        <form class="register-form">
-                <p>Email: <input type="email" class="form-control" id="login-email"></p>
-                <p>Password: <input type="password" class="form-control" id="login-password"></p>
-                <p><input type="submit" class="btn btn-default" id="login-button" value="Register"></p>
-        </form>
-        {{/if}}
     </div>
-  </div>
-  </div> <!-- /container -->
+
+    <div class="content-section-b">
+
+  <div class="row text-center row-centered">
+            <h1 class="intro-line-text">How can a gratitude journal help you?</h1>
+        </div>
+
+
+            <div class="row text-center row-centered">
+                <div class="col-md-2 col-sm-5 col-xs-5 vcenter col-centered-main">
+                    <img class="img-responsive center-block" src="https://s3.amazonaws.com/nameless-harbor-2037/img/stopwatch.png" alt="">
+                </div>
+
+                <div class="col-md-5 col-sm-8 col-xs-8 vcenter col-centered-main">
+                    <div class="clearfix"></div>
+                    <h3 class="section-heading">Reflect daily</h3>
+
+                    <p class="lead">Reply to our daily email with one to three things you're grateful for every day</p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="row text-center row-centered">
+                <div class="col-md-2 col-sm-5 col-xs-5 vcenter col-centered-main">
+                    <img class="img-responsive center-block" src="https://s3.amazonaws.com/nameless-harbor-2037/img/science.png" alt="">
+                </div>
+
+                <div class="col-md-5 col-sm-8 col-xs-8 vcenter col-centered-main">
+                    <div class="clearfix"></div>
+                    <h3 class="section-heading">Happiness from the past</h3>
+                    <p class="lead">Get reminded of something you were happy about in the past</p>
+                </div>
+            </div>
+
+            <br>
+
+             <div class="row text-center row-centered">
+                <div class="col-md-2 col-sm-5 col-xs-5 vcenter col-centered-main">
+                    <img class="img-responsive center-block" src="https://s3.amazonaws.com/nameless-harbor-2037/img/person.png" alt="">
+                </div>
+
+                <div class="col-md-5 col-sm-8 col-xs-8 vcenter col-centered-main">
+                    <div class="clearfix"></div>
+                    <h3 class="section-heading">Become happier</h3>
+
+                    <p class="lead">
+                      Studies report people are 25% happier and more energetic if they keep a gratitude journal
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+
 </template>

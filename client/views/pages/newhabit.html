@@ -1,11 +1,12 @@
 <template name="newhabit">
+<div class="add-padding-top">
     <div class="page-header text-center">
         <h1>Create a new habit</h1>
-
     </div>
     <div class="col-md-4 col-md-offset-4">
-    <p>Behavorial science shows a Reminder, Routine, and Reward is key to changing habits.</p>
-    <p>Try to write your habit of the form: When I ______, I will do ______ because ______</p>
-        {{> quickForm collection="Habits" id="insertCreateHabitForm" fields="trait,habit" type="insert"}}
+        <p>Behavorial science shows a Reminder, Routine, and Reward is key to changing habits.</p>
+        <p>Try to write your habit of the form: When I ______, I will do ______ because ______</p>
+            {{> quickForm collection="Habits" id="insertCreateHabitForm" fields="trait,habit" type="insert"}}
     </div>
+</div>
 </template>

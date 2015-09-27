@@ -13,7 +13,6 @@ aldeed:simple-schema
 iron:router
 alanning:roles
 accounts-base
-meteor-platform
 twbs:bootstrap
 momentjs:moment
 accounts-password
@@ -27,3 +26,17 @@ ian:accounts-ui-bootstrap-3
 underscore
 juliancwirko:s-alert
 matdutour:popup-confirm
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+logging
+reload
+random
+ejson
+spacebars
+check

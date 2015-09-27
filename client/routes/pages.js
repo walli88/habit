@@ -11,11 +11,9 @@ Router.map(function() {
     template: 'frontpage'
   });
 
-  // ABOUT
-  // -------------------------------------------------------
-  this.route('about', {
-    path: '/about',
-    template: 'about'
+  this.route('habits', {
+    path: '/habits',
+    template: 'habits'
   });
 
   this.route('dashboard', {
@@ -27,5 +25,4 @@ Router.map(function() {
     path: '/newhabit',
     template: 'newhabit'
   });
-
 });
