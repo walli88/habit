@@ -5,7 +5,7 @@
 // DOCUMENTS INDEX
 // -------------------------------------------------------
 Meteor.publish('documents', function() {
-  return Documents.find();
+  return Documents.find({$or:[{userId: this.userId},{userId: "0"}]});
 });
 
 // DOCUMENT SHOW
