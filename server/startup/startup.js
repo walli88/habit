@@ -33,7 +33,7 @@ Meteor.startup(function() {
       Email.send({
         from: details.from,
         to: details.to,
-        subject: 'are you closer to who you want to become?',
+        subject: 'Your daily habit reminders',
         html: messageString
       });
     });

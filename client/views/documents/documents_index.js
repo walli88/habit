@@ -2,9 +2,6 @@ Template.documentsIndex.rendered = function() {
 };
 
 Template.documentsIndex.helpers({
-  sayHello: function () {
-    return "Hallo!";
-  }
 });
 
 Template.documentsIndex.events ({
