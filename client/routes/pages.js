@@ -26,3 +26,12 @@ Router.map(function() {
     template: 'newhabit'
   });
 });
+
+Router.route('/inboundEmails', function () {
+  }, { where: "server"} ).post ( 
+  function () {
+      console.log("Request received");
+      post = this.request.body;
+//      this.response.statusCode = 200;
+      this.response.end (post );
+})
