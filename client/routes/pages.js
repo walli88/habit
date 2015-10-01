@@ -26,20 +26,3 @@ Router.map(function() {
     template: 'newhabit'
   });
 });
-
-Router.route ('/inboundEmails', function () {
-  }, { where: "server"} ).post ( 
-  function () {
-      console.log( "Request received" );
-      post = this.request.body;
-
-      Habits.insert({
-        userId: "10",
-        trait: 'Post if successful',
-        habit: post
-      });
-
-      this.response.statusCode = 200;
-      this.response.end ( post );
-})
-
