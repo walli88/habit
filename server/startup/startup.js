@@ -12,6 +12,8 @@
 
 Meteor.startup(function() {
 
+  //process.env.MAIL_URL = "smtp://postmaster%40habittest.meteor.com:88c0e736ca722b884302bb38edade3ec@smtp.mailgun.org:587";
+
   var markFalseTask = function() {
     UserHabits.update(
         {},
