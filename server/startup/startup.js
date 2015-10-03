@@ -33,7 +33,7 @@ Meteor.startup(function() {
     console.log(messageString)
 
       Email.send({
-        from: details.from,
+        from: "postmaster@sandbox430629e9d36648f893dc50345e9b3c42.mailgun.org",
         to: details.to,
         subject: 'Your daily habit reminders',
         html: messageString
@@ -50,6 +50,4 @@ Meteor.startup(function() {
   process.env.MAIL_URL='smtp://postmaster%40sandbox2f612ffff1bc4c5aa681358f40348891.mailgun.org:4278877873ed0e12f6c1e219083570bb@smtp.mailgun.org:587';
 
 	SyncedCron.start();
-
-
 });
