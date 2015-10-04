@@ -12,8 +12,6 @@
 
 Meteor.startup(function() {
 
-  //process.env.MAIL_URL = "smtp://postmaster%40habittest.meteor.com:88c0e736ca722b884302bb38edade3ec@smtp.mailgun.org:587";
-
   var markFalseTask = function() {
     UserHabits.update(
         {},
@@ -23,14 +21,13 @@ Meteor.startup(function() {
   };
 
   var mailTask = function() {
-    FutureTasks.find().forEach(function(details) {
-    var habits_array = UserHabits.find({userId: details.userId}, {fields: {'habit':1, 'count':1}}).fetch()
-    var messageString = "Here is your habits progress:"
-    + _.map(habits_array, function(s) { return "<br><br>" + s.habit + " : " + s.count + "/7"}).join()
-    + "<br><br>Update your progress here: http://habitio.meteor.com/dashboard";
+    FutureTasks.find().forEach ( function ( details ) {
+      var habits_array = UserHabits.find({userId: details.userId}, {fields: {'habit':1, 'count':1}}).fetch()
+      var messageString = "Here is your habits progress:"
+        + _.map(habits_array, function(s) { return "<br><br>" + s.habit + " : " + s.count + "/7"}).join()
+        + "<br><br>Update your progress here: http://habitio.meteor.com/dashboard";
 
-
-    console.log(messageString)
+      console.log(messageString)
 
       Email.send({
         from: "postmaster@sandbox430629e9d36648f893dc50345e9b3c42.mailgun.org",
@@ -42,7 +39,7 @@ Meteor.startup(function() {
   };
 
   addTask("mailTask", 'at 00:00 am', mailTask);
-  // addTask("mailTask", 'every 1 minute', mailTask);
+  // addTask("mailTask", 'every 2 minutes', mailTask);
 
 
   addTask("markFalseTask", 'at 00:00 am', markFalseTask)
