@@ -2,6 +2,9 @@ Template.documentsIndex.rendered = function() {
 };
 
 Template.documentsIndex.helpers({
+	documents: function () {
+		return Meteor.user().profile.grats;
+	}
 });
 
 Template.documentsIndex.events ({
