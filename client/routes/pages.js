@@ -25,4 +25,9 @@ Router.map(function() {
     path: '/newhabit',
     template: 'newhabit'
   });
+
+  this.route('tryPie', {
+  path: '/tryPie',
+  template: 'tryPie'
+});
 });
