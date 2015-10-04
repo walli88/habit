@@ -8,16 +8,14 @@
           <tr>
             <th>On this date</th>
             <th>I'm grateful for</th>
-            <th>because...</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {{#each documents}}
           <tr>
-            <td>{{showPrettyTimestamp createdAt}}</td>
-            <td><a href="{{pathFor 'documentShow'}}">{{title}}</a></td>
-            <td>{{content}}</td>
+            <td>{{showPrettyTimestamp date}}</td>
+            <td><a href="{{pathFor 'documentShow'}}">{{grat}}</a></td>
             <td>
               <a class="btn btn-xs btn-default" href="{{pathFor 'documentEdit'}}" role="button">Edit</a>
               <a class="btn btn-xs btn-danger delete-document" href="#" role="button">Delete</a>
