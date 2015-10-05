@@ -26,8 +26,8 @@ Router.map(function() {
     template: 'newhabit'
   });
 
-  this.route('tryPie', {
-  path: '/tryPie',
-  template: 'tryPie'
+  this.route('pieChart', {
+  path: '/pieChart',
+  template: 'pieChart'
 });
 });

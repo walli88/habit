@@ -30,3 +30,12 @@ if ( Habits.find().count() === 0 ) {
       habit: 'Wash the dishes right after eating'
     });
 }
+
+if ( Activities.find().count() === 0 ) {
+    Activities.insert({
+      userId: "0",
+      activity: 'Cook',
+      hour: 1,
+      perweek: 3
+    });
+}

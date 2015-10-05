@@ -1,0 +1,53 @@
+<template name="pieChart">
+  <div class="container add-padding-top">
+        <div class="page-header text-center">
+        <h1>How you spend  your time</h1>
+    </div>
+        <div class="row">
+    <div class="col-md-4 col-md-offset-2">
+    {{> quickForm collection="Activities" id="insertActivityForm" fields="activity,hour,perweek" type="insert"}}
+    </div>
+    <div class="col-md-4">
+    <svg id="pieChart"></svg>
+    </div>
+
+
+    </div>
+<div class="col-md-8 col-md-offset-2">
+          <table class="table">
+        <thead>
+          <tr>
+            <th>Activity</th>
+            <th>Hours</th>
+            <th>Times per Week</th>
+            <th>Hours per Week</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each activities}}
+          <tr>
+            <td>{{activity}}</td>
+            <td>{{hour}}</td>
+            <td>{{perweek}}</td>
+            <td>{{multiply hour perweek}}</td>
+            <td>
+              <a class="btn btn-xs btn-danger delete-activity" href="#" role="button">Delete</a>
+              </td>
+          </tr>
+
+          {{else}}
+          No activities
+          {{/each}}
+          <tr>
+            <td>Free</td>
+            <td>--</td>
+            <td>--</td>
+            <td>{{sumActivities}}</td>
+            <td>--</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+</template>
