@@ -2,7 +2,7 @@
 // ACCOUNTS CONFIGURATION (server-side)
 // ***************************************************************
 
-Accounts.onCreateUser(function(options, user) {
+/*Accounts.onCreateUser(function(options, user) {
     user.profile = {};
     //   // we wait for Meteor to create the user before sending an email
     Meteor.setTimeout(function() { //Hacky. Why do we have to wait?
@@ -18,4 +18,4 @@ Accounts.onCreateUser(function(options, user) {
 
   return user;
 
-});
+});*/

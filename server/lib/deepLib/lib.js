@@ -6,7 +6,7 @@ FutureTasks = new Meteor.Collection('future_tasks')
 
 addTask = function (name, schedule, task) {
 
-  schedule = typeof schedule !== 'undefined' ? schedule : 'every 1 min';
+  schedule = typeof schedule !== 'undefined' ? schedule : 'every 10 min';
   SyncedCron.add({
     name: name,
     schedule: function(parser) {
@@ -19,7 +19,7 @@ addTask = function (name, schedule, task) {
 
 Meteor.methods({
   scheduleMail: function ( details ) {
-    FutureTasks.insert(details);
+    FutureTasks.insert ( details );
   },
 
   sendConfirmationEmail: function ( ) {
@@ -31,7 +31,7 @@ Meteor.methods({
     + "\n\nStay tuned for reminder emails from this account.";
 
     Email.send ({
-      to: Meteor.user().emails[0],
+      to: Meteor.user().emails[0].address,
       from: "postmaster@sandbox430629e9d36648f893dc50345e9b3c42.mailgun.org",
       subject: "Thanks for signing up for The Gratitude Journal",
       text: text

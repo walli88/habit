@@ -75,7 +75,6 @@ TODO
 
   'change #trait-picker': function(e) {
     var trait = $(e.target).val();
-    Session.keys
     setTrait(trait);
   },
 
