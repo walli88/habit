@@ -36,30 +36,26 @@ Template.frontpage.events({
   'submit .register-form' : function(e, t){
     e.preventDefault();
     var email = t.find('#login-email').value
-      , password = t.find('#login-password').value; /* Eventually, this should be replaced with default loginButtons for security purposes but with custom template. See here https://meteorhacks.com/extending-meteor-accounts */
+      , password = t.find('#login-password').value
+      , grat = t.find('#login-first-grat').value
+      , gratArr = []; /* Eventually, this should be replaced with default loginButtons for security purposes but with custom template. See here https://meteorhacks.com/extending-meteor-accounts */
 
-    var habits = getSelectedHabits();
-    savedHabits = habits;
+    gratArr.push({grat:grat, date: new Date()});
+    /*var habits = getSelectedHabits();
+    savedHabits = habits;*/
     if (Meteor.user() === null) {
       Accounts.createUser ({
-        email:email,
-        password:password,
+        email:          email,
+        password:       password,
+        profile.grats:  gratArr
       }, function ( err ) {
         if (err) console.log(err);
-        else {;
-          Meteor.call( 'saveUserHabits', habits );
-          Meteor.call('scheduleMail', {
-          userId: Meteor.user()._id,
-          from: Meteor.user().emails[0].address,
-          to: Meteor.user().emails[0].address,
-          subject: "Are you closer to who you want to be?",
-      })
-
-        };
-      })
-    } else {
-      Meteor.call ( 'saveUserHabits', habits );
+        else {
+          sendConfirmationEmail();
+        }
     }
+
+      
     return false;
   },
 

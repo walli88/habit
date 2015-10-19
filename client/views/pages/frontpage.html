@@ -1,55 +1,100 @@
 <template name="frontpage">
+  <div class="intro-header">
+    <div class="container">
+      <div class="row">
+          <div><h1 id = "masthead">The Gratitude Journal</h1></div>
+          <div class="col-md-5 text-left first-panel">
+            <div class="panel panel-primary panel-transparent">
+              <div class="panel-body">
+                <h3 class="header-text">Happier, healthier, and more productive</h3>
+                Gratitude journals are scientifically proven to increase your well-being, productivity, and health. Here's how you can start:
+                <p>
+                  <ol>
+                    <li>Receive a daily reminder email.</li>
+                    <li>Reply with what you were grateful for that day.</li>
+                    <li>Build a history of what you were grateful for and share with friends and family.</li>
+                  </ol>
+                </p>
+                                {{#if currentUser}}
+                              <!-- <p><button type="submit" class="btn btn-default" id="submit-habits">Submit</button></p> -->
+                              <p><input type="submit" class="btn btn-default" id="submit-habits" value="Submit"></p>
+                              {{else}}
+                              {{/if}}
+              </div>
+            </div>
+          </div>
+            
+          <div class = "col-md-7 text-left">
+            <div class = "panel panel-primary panel-transparent">
+              <div class = "panel-body">
+                <form class="register-form">
+                  <p class = "handlee">What are you grateful for today?<input type ="textarea" class="transparent-form form-control" id="login-first-grat" placeholder = "Good coffee, a smiling stranger, a friendly rabbit..." autofocus></p> 
+                  <p class = "handlee">Email (use the email that you'll be replying from): <input type="email" class="form-control transparent-form" id="login-email"></p>
+                  <p class = "handlee">Password: <input type="password" class="form-control transparent-form" id="login-password"></p>
+                  <p class = "text-center"><input type="submit" class="myButton" id="login-button" value="Register"></p>
+                </form>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+        <!-- /.container -->
+  </div>
 
-    <div class="intro-header">
-        <div class="container">
 
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="intro-message">
-                        <h1>Habit.io</h1>
-                        <h3>Become a better you</h3>
-                        <hr class="intro-divider">
-                        <div class="col-md-4 col-md-offset-4 text-left">
-                          I want to be:
-                          <p>
-                            <select class="form-control" id="trait-picker">
-                              {{#each traits}}
-                                <option value="{{this}}">{{this}}</option>
-                              {{/each}}
-                            </select>
-                          </p>
-                          <p>
-                            <div class="list-group">
-                              {{#each habitsSelected}}
-                                <button type="button" class="list-group-item btn-block active" id="habit-button">{{habit}}</button>
-                              {{/each}}
-                            </div>
-                          </p>
-                          <p>
-                            <div class="list-group">
-                              {{#each habits}}
-                                <button type="button" class="list-group-item btn-block" id="habit-button">{{habit}}</button>
-                              {{/each}}
-                            </div>
-                          </p>
-                          {{#if currentUser}}
-                          <!-- <p><button type="submit" class="btn btn-default" id="submit-habits">Submit</button></p> -->
-                          <p><input type="submit" class="btn btn-default" id="submit-habits" value="Submit"></p>
-                          {{else}}
-                          <form class="register-form">
-                                  <p>Email: <input type="email" class="form-control" id="login-email"></p>
-                                  <p>Password: <input type="password" class="form-control" id="login-password"></p>
-                                  <p><input type="submit" class="btn btn-default" id="login-button" value="Register"></p>
-                          </form>
-                          {{/if}}
-                        </div>
+<!-- 
+
+Don’t just go through the motions. Research by psychologist Sonja Lyubomirsky and others suggests that journaling is more effective if you first make the conscious decision to become happier and more grateful. “Motivation to become happier plays a role in the efficacy of journaling,” says Emmons.
+
+Go for depth over breadth. Elaborating in detail about a particular thing for which you’re grateful carries more benefits than a superficial list of many things.
+
+Get personal. Focusing on people to whom you are grateful has more of an impact than focusing on things for which you are grateful.
+Try subtraction, not just addition. One effective way of stimulating gratitude is to reflect on what your life would be like without certain blessings, rather than just tallying up all those good things.
+
+Savor surprises. Try to record events that were unexpected or surprising, as these tend to elicit stronger levels of gratitude.
+
+Don’t overdo it. Writing occasionally (once or twice per week) is more beneficial than daily journaling. In fact, one study by Lyubomirsky and her colleagues found that people who wrote in their gratitude journals once a week for six weeks reported boosts in happiness afterward; people who wrote three times per week didn’t. “We adapt to positive events quickly, especially if we constantly focus on them,” says Emmons. “It seems counterintuitive, but it is how the mind works.”
+-->
+
+    <div class="content-section-b">
+    <div class="container">
+            <div class="row text-center row-centered">
+                <h1 class="intro-line-text">Why gratitude journals?</h1>
+            </div>
+            <div class="row row-centered margin-lr">
+
+                <div class="col-md-4 col-sm-8 col-xs-8 col-centered">
+                    <img class="img-responsive center-block" src="https://s3.amazonaws.com/nameless-harbor-2037/img/science.png" alt="">
+                    <div align="center">
+                        <h3 class="section-heading-light">Backed by science</h3>
+                        <p class="lead-white">The <a href="http://emmons.faculty.ucdavis.edu/gratitude-and-well-being/">Emmons lab at UC Davis </a> has been conducting research on gratitude journals for over a decade. Short, but regular reflection on what brings meaning and gratitude to your life leads to higher levels of productivity, health, and accomplishment.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4 col-sm-8 col-xs-8 col-centered">
+                    <img class="img-responsive center-block" src="https://s3.amazonaws.com/nameless-harbor-2037/img/stopwatch.png" alt="">
+                    <div align="center">
+                        <h3 class="section-heading-light">Easy and timely</h3>
+                        <p class="lead-white">Pen and paper isn't everyone's cup of tea. By scheduling daily reminder emails and replying directly to the email, keeping a gratitude journal becomes quick and easy. Over time, we'll even surprise you with what you were happy about in the past.</p>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4 col-sm-8 col-xs-8 col-centered">
+                    <img class="img-responsive center-block" src="https://s3.amazonaws.com/nameless-harbor-2037/img/person.png" alt="">
+                    <div align="center">
+                        <h3 class="section-heading-light">Social</h3>
+                        <p class="lead-white">Were you grateful for someone else? Share the love! We're developing a personal dashboard, so you can look back at your history, and a social dashboard so that you can brigthen someone else's day, too.</p>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- /.container -->
+          </div>
     </div>
 
+<!--
 
     <div class="content-section-b">
     <div class="container">
@@ -65,7 +110,7 @@
                         <p class="lead-white">Reflect on something you're grateful everyday</p>
                     </div>
                 </div>
-<!--  -->
+
 
                 <div class="col-md-4 col-sm-8 col-xs-8 col-centered">
                     <img class="img-responsive center-block" src="https://s3.amazonaws.com/habitio/todo3.svg" alt="" height="100" width="100">
@@ -90,24 +135,9 @@
     <div class="content-section-b">
 
   <div class="row text-center row-centered">
-            <h1 class="intro-line-text">How can a gratitude journal help you?</h1>
+            <h1 class="intro-line-text">Why gratitude journals?</h1>
         </div>
 
-
-            <div class="row text-center row-centered">
-                <div class="col-md-2 col-sm-5 col-xs-5 vcenter col-centered-main">
-                    <img class="img-responsive center-block" src="https://s3.amazonaws.com/nameless-harbor-2037/img/stopwatch.png" alt="">
-                </div>
-
-                <div class="col-md-5 col-sm-8 col-xs-8 vcenter col-centered-main">
-                    <div class="clearfix"></div>
-                    <h3 class="section-heading">Reflect daily</h3>
-
-                    <p class="lead">Reply to our daily email with one to three things you're grateful for every day</p>
-                </div>
-            </div>
-
-            <br>
 
             <div class="row text-center row-centered">
                 <div class="col-md-2 col-sm-5 col-xs-5 vcenter col-centered-main">
@@ -116,8 +146,24 @@
 
                 <div class="col-md-5 col-sm-8 col-xs-8 vcenter col-centered-main">
                     <div class="clearfix"></div>
-                    <h3 class="section-heading">Happiness from the past</h3>
-                    <p class="lead">Get reminded of something you were happy about in the past</p>
+                    <h3 class="section-heading">Daily reflection</h3>
+
+                    <p class="lead">The <a href="http://emmons.faculty.ucdavis.edu/gratitude-and-well-being/">Emmons lab at UC Davis </a> has been conducting research on gratitude journals for over a decade. Short, but regular reflection on what brings meaning and gratitude to your life leads to higher levels of productivity, health, and accomplishment.</p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="row text-center row-centered">
+                <div class="col-md-2 col-sm-5 col-xs-5 vcenter col-centered-main">
+
+                    <img class="img-responsive center-block" src="https://s3.amazonaws.com/nameless-harbor-2037/img/stopwatch.png" alt="">
+                </div>
+
+                <div class="col-md-5 col-sm-8 col-xs-8 vcenter col-centered-main">
+                    <div class="clearfix"></div>
+                    <h3 class="section-heading">Easy and timely</h3>
+                    <p class="lead">Pen and paper isn't everyone's cup of tea. By scheduling when you want a reminder email to come and replying directly to the email, keeping a gratitude journal becomes quick and easy. Over time, we'll surprise you with what you were happy about in the past.</p>
                 </div>
             </div>
 
@@ -130,15 +176,15 @@
 
                 <div class="col-md-5 col-sm-8 col-xs-8 vcenter col-centered-main">
                     <div class="clearfix"></div>
-                    <h3 class="section-heading">Become happier</h3>
+                    <h3 class="section-heading"> <em>Coming soon: </em> Brighten someone else's day</h3>
 
                     <p class="lead">
-                      Studies report people are 25% happier and more energetic if they keep a gratitude journal
+                      Were you grateful for someone else? Share the love! We're developing a personal and social dashboard so that you can brigthen someone else's day, too.
                     </p>
                 </div>
             </div>
         </div>
-
+--> 
 
 
 </template>
