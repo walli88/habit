@@ -52,6 +52,10 @@ Template.frontpage.events({
         if (err) console.log(err);
         else {
           sendConfirmationEmail();
+          Meteor.call('scheduleMail', {
+            userId: Meteor.user()._id,
+            to: Meteor.user().emails[0].address,
+      }
         }
     }
 
@@ -75,6 +79,7 @@ TODO
 
   'change #trait-picker': function(e) {
     var trait = $(e.target).val();
+    Session.keys;
     setTrait(trait);
   },
 

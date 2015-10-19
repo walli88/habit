@@ -22,7 +22,14 @@ Meteor.startup(function() {
 
   var mailTask = function() {
     FutureTasks.find().forEach ( function ( details ) {
+
+      var userObj = Meteor.users.findOne({"_id": details.userId}).fetch();
+      var gratArr = userObj.profile.grats.length;
+      var grat = gratArr [ Math.floor ( Math.random() * gratArr.length ) ].grat
+
       var messageString = "Hey! Take a little bit of time to think about a few things that made you happy today. Just reply directly in this email, entering each gratitude entry on a new line: "
+        + "<br><br>Here are a few things that made you happy in the past"
+        + "<br><br>" + grat
         + "<br><br>Update your progress here: http://gratitudejournal.meteor.com";
 
       console.log(messageString);
@@ -30,7 +37,7 @@ Meteor.startup(function() {
       Email.send({
         from: "postmaster@sandbox430629e9d36648f893dc50345e9b3c42.mailgun.org",
         to: details.to,
-        subject: 'Your daily habit reminders',
+        subject: 'An entry in your gratitude journal!',
         html: messageString
       });
       /*
