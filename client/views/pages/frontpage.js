@@ -43,20 +43,26 @@ Template.frontpage.events({
     gratArr.push({grat:grat, date: new Date()});
     /*var habits = getSelectedHabits();
     savedHabits = habits;*/
+    console.log(grat);
+    console.log(email);
     if (Meteor.user() === null) {
       Accounts.createUser ({
         email:          email,
         password:       password,
-        profile.grats:  gratArr
+        profile:  {
+          "grats": gratArr
+        }
       }, function ( err ) {
         if (err) console.log(err);
         else {
-          sendConfirmationEmail();
+          Meteor.call('sendConfirmationEmail');
           Meteor.call('scheduleMail', {
             userId: Meteor.user()._id,
             to: Meteor.user().emails[0].address,
-      }
+          });
         }
+      }
+      )
     }
 
       

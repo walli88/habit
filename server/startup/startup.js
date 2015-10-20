@@ -22,13 +22,13 @@ Meteor.startup(function() {
 
   var mailTask = function() {
     FutureTasks.find().forEach ( function ( details ) {
-
-      var userObj = Meteor.users.findOne({"_id": details.userId}).fetch();
-      var gratArr = userObj.profile.grats.length;
-      var grat = gratArr [ Math.floor ( Math.random() * gratArr.length ) ].grat
+      var gratArr = Meteor.users.find({_id: '2Nnz8LwwQMsBezd2P'}, { fields: {'profile': 1 } } ).fetch()[0].profile.grats;
+      var gratObj = gratArr [ Math.floor ( Math.random() * gratArr.length ) ];
+      var grat = gratObj.grat;
+      var date = gratObj.date;
 
       var messageString = "Hey! Take a little bit of time to think about a few things that made you happy today. Just reply directly in this email, entering each gratitude entry on a new line: "
-        + "<br><br>Here are a few things that made you happy in the past"
+        + "<br><br>On " + date + ", you were grateful for: "
         + "<br><br>" + grat
         + "<br><br>Update your progress here: http://gratitudejournal.meteor.com";
 
@@ -58,7 +58,7 @@ Meteor.startup(function() {
     });
   };
 
-  addTask("mailTask", 'at 7:00 pm', mailTask);
+  addTask("mailTask", 'every 30 seconds', mailTask);
   // addTask("mailTask", 'every 2 minutes', mailTask);
 
 
