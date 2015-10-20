@@ -14,12 +14,10 @@ addTask = function (name, schedule, task) {
     },
     job: task
   });
-
 }
 
 Meteor.methods({
   scheduleMail: function ( details ) {
     FutureTasks.insert ( details );
   }
-
 });
