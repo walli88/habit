@@ -3,6 +3,12 @@
 // ***************************************************************
 
 
+/* Tasks
+  1. Go for broad customizability for reminder emails
+  2. Integrate SMS txt (play with Twilio API)
+  3. OnLoad page
+*/
+
 //adds task to SyncedCron
 /*
 */
@@ -35,7 +41,7 @@ Meteor.startup(function() {
       console.log(messageString);
 
       Email.send({
-        from: "postmaster@sandbox430629e9d36648f893dc50345e9b3c42.mailgun.org",
+        from: "Gratitude Journal <postmaster@sandbox430629e9d36648f893dc50345e9b3c42.mailgun.org>",
         to: details.to,
         subject: 'An entry in your gratitude journal!',
         html: messageString
@@ -59,7 +65,7 @@ Meteor.startup(function() {
   };
 
   //addTask("mailTask", 'at 9:00 pm', mailTask);
-  addTask("mailTask", 'at 9:00 pm', mailTask);
+  addTask("mailTask", 'every 30 seconds', mailTask);
 
 
   addTask("markFalseTask", 'at 7:00 pm', markFalseTask)
