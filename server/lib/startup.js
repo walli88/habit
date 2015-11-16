@@ -17,13 +17,13 @@ Meteor.startup(function() {
   };
 
   var mailTask = function() {
-    console.log(FutureTasks.find());
     console.log(FutureTasks.find().fetch());
     FutureTasks.find().forEach ( function ( details ) {
-      var gratArr = Meteor.users.find({ _id: details.userId /*"2Nnz8LwwQMsBezd2P"*/ }, { fields: {'profile': 1 } } ).fetch();
-      console.log("details userId");
       console.log(details.userId);
+      var gratArr = Meteor.users.find({ _id: details.userId /*"2Nnz8LwwQMsBezd2P"*/ }, { fields: {'profile': 1 } } ).fetch();
+      console.log(gratArr);
       var gratObj = gratArr [ Math.floor ( Math.random() * gratArr.length ) ];
+      console.log(gratObj);
       var grat = gratObj.profile.grats[0].grat;
       var date = gratObj.profile.grats[0].date;
 
@@ -59,7 +59,7 @@ Meteor.startup(function() {
   };
 
   //addTask("mailTask", 'at 9:00 pm', mailTask);
-  addTask("mailTask", 'every 30 seconds', mailTask);
+  addTask("mailTask", 'at 9:00 pm', mailTask);
 
 
   addTask("markFalseTask", 'at 7:00 pm', markFalseTask)
