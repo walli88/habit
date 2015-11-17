@@ -2,9 +2,9 @@
     <div class="add-padding-top">
       <h2>Create new journal entry</h2> {{#autoForm collection="Documents" id="documentForm" type="insert"}}
       <fieldset>
-        {{> afQuickField name='title'}} {{> afQuickField name='content' rows=6}}
+		{{> afQuickField name='content' rows=3}}
       </fieldset>
-      <button type="submit" class="btn btn-primary">Create</button>
+      <button type="submit" class="new-entry">Create</button>
       <a class="btn btn-link" role="button" href="{{pathFor 'documentsIndex'}}">Back</a> {{/autoForm}}
     </div>
 </template>

@@ -8,7 +8,16 @@ Router.map(function() {
   // -------------------------------------------------------
   this.route('frontpage', {
     path: '/',
-    template: 'frontpage'
+    template: 'frontpage',
+    onBeforeAction: function () {
+      if (Meteor.user()) { 
+        if (Meteor.loggingIn()) {}
+        else {
+          Router.go('documentsIndex');
+        }
+      }
+      this.next();
+    }
   });
 
   this.route('habits', {
@@ -27,7 +36,7 @@ Router.map(function() {
   });
 
   this.route('pieChart', {
-  path: '/pieChart',
-  template: 'pieChart'
-});
+    path: '/pieChart',
+    template: 'pieChart'
+  });
 });

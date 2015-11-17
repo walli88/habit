@@ -41,7 +41,7 @@ Meteor.startup(function() {
       console.log(messageString);
 
       Email.send({
-        from: "Gratitude Journal <postmaster@sandbox430629e9d36648f893dc50345e9b3c42.mailgun.org>",
+        from: "The Gratitude Journal <postmaster@sandbox430629e9d36648f893dc50345e9b3c42.mailgun.org>",
         to: details.to,
         subject: 'An entry in your gratitude journal!',
         html: messageString
@@ -65,10 +65,10 @@ Meteor.startup(function() {
   };
 
   //addTask("mailTask", 'at 9:00 pm', mailTask);
-  addTask("mailTask", 'every 30 seconds', mailTask);
+  addTask("mailTask", 'at 6:00 am', mailTask);
 
 
-  addTask("markFalseTask", 'at 7:00 pm', markFalseTask)
+  //addTask("markFalseTask", 'at 7:00 pm', markFalseTask)
 
   process.env.MAIL_URL='smtp://postmaster%40sandbox2f612ffff1bc4c5aa681358f40348891.mailgun.org:4278877873ed0e12f6c1e219083570bb@smtp.mailgun.org:587';
 
