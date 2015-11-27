@@ -12,21 +12,23 @@ Router.map(function() {
       //Update the person's profile with gratitudes
 
       var grats = self.request.body [ "stripped-text" ]; // Mailgun does a HTTP post request and we acquire stripped-html      
+      console.log(grats);
       grats = grats.split("\n");
       
       var email = self.request.body [ "from" ].match(/<([^>]+)>/)[1] // matches angular brackets and chooses index at one to get email sender's address
-
       // for key in self.request.FILES
       var user = Meteor.users.findOne( { emails: { $elemMatch: { address: email } } } );
+      var date = self.request.body [ "Date" ];
       console.log("grats: " + grats);
-      console.log("email: " + email);
       
       if ( !!JSON.stringify(user) ) console.log ( "success" );
       
-      grats.forEach ( function ( grat ) {
+      for ( var i = 0; i < grats.length; i++) {
+        grat = grats[i];
         grat = grat.trim();
-        Meteor.users.update ( user, { $push: { "profile.grats" : { "grat": grat, "date": self.request.body [ "Date" ] } } }, true );
-      })
+        console.log("loop grat " + grat + " loop i " + i);
+        Meteor.users.update ( user._id, { $push: { "profile.grats" : { "grat": grat, "date": date } } } );
+      };
 
       //For local testing purposes only
       self.response.write( "You wrote: " + JSON.stringify ( self.request.body [ "stripped-html" ] ) );

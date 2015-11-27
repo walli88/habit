@@ -26,24 +26,23 @@ Meteor.startup(function() {
     console.log(FutureTasks.find().fetch());
     FutureTasks.find().forEach ( function ( details ) {
       console.log(details.userId);
-      var gratArr = Meteor.users.find({ _id: details.userId /*"2Nnz8LwwQMsBezd2P"*/ }, { fields: {'profile': 1 } } ).fetch();
-      console.log(gratArr);
-      var gratObj = gratArr [ Math.floor ( Math.random() * gratArr.length ) ];
-      console.log(gratObj);
-      var grat = gratObj.profile.grats[0].grat;
-      var date = gratObj.profile.grats[0].date;
+      var profileObj = Meteor.users.find({ _id: details.userId /*"2Nnz8LwwQMsBezd2P"*/ }, { fields: {'profile': 1 } } ).fetch()[0].profile;
+      var gratObj = profileObj.grats [ Math.floor ( Math.random() * profileObj.grats.length ) ];
+      var grat = gratObj.grat;
+      var date = gratObj.date;
 
-      var messageString = "Hey! Take a little bit of time to think about a few things that made you happy today. Just reply directly in this email, entering each gratitude entry on a new line: "
-        + "<br><br>On " + date + ", you were grateful for: "
+
+      var messageString = "Hey!" 
+        + "<br><br>"
+        + "Take a little bit of time to think about a few things that made you happy today. Just reply directly in this email, entering each gratitude entry on a new line: "
+        + "<br><br>On " + date.getMonth() + "/" + date.getDay() + "/" + date.getYear() + ", you were grateful for: "
         + "<br><br>" + grat
         + "<br><br>Update your progress here: http://gratitudejournal.meteor.com";
-
-      console.log(messageString);
 
       Email.send({
         from: "The Gratitude Journal <postmaster@sandbox430629e9d36648f893dc50345e9b3c42.mailgun.org>",
         to: details.to,
-        subject: 'An entry in your gratitude journal!',
+        subject: 'An entry in your gratitude journal',
         html: messageString
       });
       /*
