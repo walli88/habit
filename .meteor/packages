@@ -41,5 +41,3 @@ ejson
 spacebars
 check
 gfk:mailgun-api
-insecure
-autopublish
