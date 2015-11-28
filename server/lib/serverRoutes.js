@@ -19,6 +19,7 @@ Router.map(function() {
       // for key in self.request.FILES
       var user = Meteor.users.findOne( { emails: { $elemMatch: { address: email } } } );
       var date = self.request.body [ "Date" ];
+      
       console.log("grats: " + grats);
       
       if ( !!JSON.stringify(user) ) console.log ( "success" );

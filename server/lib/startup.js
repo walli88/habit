@@ -26,17 +26,41 @@ Meteor.startup(function() {
     console.log(FutureTasks.find().fetch());
     FutureTasks.find().forEach ( function ( details ) {
       console.log(details.userId);
-      var profileObj = Meteor.users.find({ _id: details.userId /*"2Nnz8LwwQMsBezd2P"*/ }, { fields: {'profile': 1 } } ).fetch()[0].profile;
-      var gratObj = profileObj.grats [ Math.floor ( Math.random() * profileObj.grats.length ) ];
-      var grat = gratObj.grat;
-      var date = gratObj.date;
+      var profileObj = Meteor.users.find({ _id: details.userId }, { fields: {'profile': 1 } } ).fetch()[0].profile;
+      var length = profileObj.length;
 
+      if ( length > 0 ) {
+        var gratObj0 = profileObj.grats [ profileObj.grats.length ];
+        var grat0 = gratObj0.grat;
+        var date0 = gratObj0.date;
+        var messageString = "Hey!" 
+          + "<br><br>"
+          + "Take a little bit of time to think about a few things that made you happy today. Just reply directly in this email, entering each gratitude entry on a new line: "
+          + "<br><br>On " + date0 + ", you were grateful for: "
+          + "<br><br>" + grat0
+      }
 
-      var messageString = "Hey!" 
-        + "<br><br>"
-        + "Take a little bit of time to think about a few things that made you happy today. Just reply directly in this email, entering each gratitude entry on a new line: "
-        + "<br><br>On " + date.getMonth() + "/" + date.getDay() + "/" + date.getYear() + ", you were grateful for: "
-        + "<br><br>" + grat
+      if ( length > 1 ) {
+        var gratObj1 = profileObj.grats [ profileObj.grats.length - 1 ];
+        var grat1 = gratObj1.grat;
+        var date1 = gratObj1.date;
+
+        var messageString = messageString +
+        + "<br><br>On " + date1 + ", you were grateful for: "
+        + "<br><br>" + grat1;
+      }
+
+      if ( length > 2 ) {
+        var gratObj2 = profileObj.grats [ profileObj.grats.length - 2 ];
+        var grat2 = gratObj2.grat;
+        var date2 = gratObj2.date;
+
+        var messageString = messageString +
+        + "<br><br>On " + date2 + ", you were grateful for: "
+        + "<br><br>" + grat2
+      }
+
+      var messageString = messageString +
         + "<br><br>Update your progress here: http://gratitudejournal.meteor.com";
 
       Email.send({
@@ -63,8 +87,8 @@ Meteor.startup(function() {
     });
   };
 
-  //addTask("mailTask", 'at 9:00 pm', mailTask);
-  addTask("mailTask", 'at 6:00 am', mailTask);
+  //addTask("mailTask", 'at 5:30 am', mailTask);
+  addTask("mailTask", 'at 6:00 AM', mailTask);
 
 
   //addTask("markFalseTask", 'at 7:00 pm', markFalseTask)
