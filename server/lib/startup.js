@@ -26,7 +26,7 @@ Meteor.startup(function() {
     console.log(FutureTasks.find().fetch());
     FutureTasks.find().forEach ( function ( details ) {
       console.log(details.userId);
-      var profileObj = Meteor.users.find({ _id: details.userId }, { fields: {'profile': 1 } } ).fetch()[0].profile;
+      var profileObj = Meteor.users.find({ _id: /*details.userId*/ '2Nnz8LwwQMsBezd2P' }, { fields: {'profile': 1 } } ).fetch()[0].profile.grats;
       var length = profileObj.length;
 
       if ( length > 0 ) {
