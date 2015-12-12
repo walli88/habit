@@ -25,8 +25,9 @@ Meteor.startup(function() {
   var mailTask = function() {
     console.log(FutureTasks.find().fetch());
     FutureTasks.find().forEach ( function ( details ) {
-      console.log(details.userId);
-      var profileObj = Meteor.users.find({ _id: /*details.userId*/ '2Nnz8LwwQMsBezd2P' }, { fields: {'profile': 1 } } ).fetch()[0].profile;
+      console.log("details.userId: " + details.userId);
+      var profileObj = Meteor.users.find({ _id: details.userId /*'CS3MvJX4Goiaqe2wA'*/ }, { fields: {'profile': 1 } } ).fetch()[0].profile;
+      console.log("profileobj: " + profileObj);
       profileObj = profileObj.grats;
       var length = profileObj.length;
 
@@ -34,11 +35,11 @@ Meteor.startup(function() {
         var gratObj0 = profileObj [ length - 1 ];
         var grat0 = gratObj0.grat;
         var date0 = gratObj0.date;
-        messageString = "Hey!" 
+        messageString = "Hi," 
           + "<br><br>"
-          + "Take a little bit of time to think about a few things that made you happy today. Just reply directly in this email, entering each gratitude entry on a new line: "
+          + "GOOD LUCK WITH FINAL EXAMS EVERYONE! You are going to crush it. As always, reply with something that you're grateful for. Your entries will be encrypted."
           + "<br><br>On " + date0 + ", you were grateful for: "
-          + "<br><br>" + grat0
+          + "<br><br>" + grat0;
 
         if ( length > 1 ) {
           var gratObj1 = profileObj [ length - 2 ];
@@ -56,7 +57,7 @@ Meteor.startup(function() {
 
             messageString = messageString
             + "<br><br>On " + date2 + ", you were grateful for: "
-            + "<br><br>" + grat2
+            + "<br><br>" + grat2;
           }
 
         }
@@ -68,7 +69,7 @@ Meteor.startup(function() {
       Email.send({
         from: "The Gratitude Journal <postmaster@sandbox430629e9d36648f893dc50345e9b3c42.mailgun.org>",
         to: details.to,
-        subject: 'An entry in your gratitude journal',
+        subject: 'Gratitude Journal: Final exams edition',
         html: messageString
       });
       /*
@@ -89,8 +90,8 @@ Meteor.startup(function() {
     });
   };
 
-  //addTask("mailTask", 'every 2 minutes', mailTask);
-  addTask("mailTask", 'at 7:10 AM', mailTask);
+  //addTask("mailTask", 'every 30 seconds', mailTask);
+  addTask("mailTask", 'at 5:00 am', mailTask);
 
 
   //addTask("markFalseTask", 'at 7:00 pm', markFalseTask)
