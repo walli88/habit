@@ -22,56 +22,13 @@ Meteor.startup(function() {
       )
   };
 
-  var mailTask = function() {
-    console.log(FutureTasks.find().fetch());
-    FutureTasks.find().forEach ( function ( details ) {
-      console.log("details.userId: " + details.userId);
-      var profileObj = Meteor.users.find({ _id: details.userId /*'CS3MvJX4Goiaqe2wA'*/ }, { fields: {'profile': 1 } } ).fetch()[0].profile;
-      console.log("profileobj: " + profileObj);
-      profileObj = profileObj.grats;
-      var length = profileObj.length;
+//On startup, addtasks to SyncCron for "every day at 10:00 PM".
+//
 
-      if ( length > 0 ) {
-        var gratObj0 = profileObj [ length - 1 ];
-        var grat0 = gratObj0.grat;
-        var date0 = gratObj0.date;
-        messageString = "Hi," 
-          + "<br><br>"
-          + "GOOD LUCK WITH FINAL EXAMS EVERYONE! You are going to crush it. As always, reply with something that you're grateful for. Your entries will be encrypted."
-          + "<br><br>On " + date0 + ", you were grateful for: "
-          + "<br><br>" + grat0;
-
-        if ( length > 1 ) {
-          var gratObj1 = profileObj [ length - 2 ];
-          var grat1 = gratObj1.grat;
-          var date1 = gratObj1.date;
-
-          messageString = messageString
-          + "<br><br>On " + date1 + ", you were grateful for: "
-          + "<br><br>" + grat1;
-
-          if ( length > 2 ) {
-            var gratObj2 = profileObj [ length - 3 ];
-            var grat2 = gratObj2.grat;
-            var date2 = gratObj2.date;
-
-            messageString = messageString
-            + "<br><br>On " + date2 + ", you were grateful for: "
-            + "<br><br>" + grat2;
-          }
-
-        }
-      }
-
-      messageString = messageString
-        + "<br><br>Update your progress here: http://gratitudejournal.meteor.com";
-
-      Email.send({
-        from: "The Gratitude Journal <postmaster@sandbox430629e9d36648f893dc50345e9b3c42.mailgun.org>",
-        to: details.to,
-        subject: 'Gratitude Journal: Final exams edition',
-        html: messageString
-      });
+  FutureTasks.find().forEach ( function ( details ) {
+    //SENDMAIL should be the last agument
+    addTask(details.userId, 'every day at 10:00 PM', details );
+  });
       /*
       var habits_array = UserHabits.find({userId: details.userId}, {fields: {'habit':1, 'count':1}}).fetch()
       var messageString = "Here is your habits progress:"
@@ -87,11 +44,8 @@ Meteor.startup(function() {
         html: messageString
       });
       */
-    });
-  };
 
   //addTask("mailTask", 'every 30 seconds', mailTask);
-  addTask("mailTask", 'at 5:00 am', mailTask);
 
 
   //addTask("markFalseTask", 'at 7:00 pm', markFalseTask)
