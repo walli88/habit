@@ -158,3 +158,9 @@ body {
   margin-bottom: 5px;
   pointer-events: auto;
 }
+
+/* Making look nice */
+
+
+/* Inline Edit */
+.inlineEdit.hover { background: #fffbe1; }

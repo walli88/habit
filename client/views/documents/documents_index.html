@@ -16,11 +16,13 @@
           {{#each documents}}
           <tr>
             <td>{{showPrettyTimestamp date}}</td>
-            <td><a href="{{pathFor 'documentShow'}}">{{grat}}</a></td>
+            <td class = "inlineEdit">
+              <form><input type="hidden" name="hiddenfield"></form>
+              {{grat}}
+            </td>
             <td>
-              <a class="btn btn-xs btn-default" href="{{pathFor 'edit'}}" role="button">Edit</a>
               <a class="btn btn-xs btn-danger delete-document" href="#" role="button">Delete</a>
-              </td>
+            </td>
           </tr>
           {{else}}
           No documents

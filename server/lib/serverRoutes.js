@@ -22,7 +22,7 @@ Router.map(function() {
       
       console.log("grats: " + grats);
       
-      if ( !!JSON.stringify(user) ) console.log ( "success" );
+      if ( !!JSON.stringify ( user ) ) console.log ( "success" );
       
       for ( var i = 0; i < grats.length; i++) {
         grat = grats[i];

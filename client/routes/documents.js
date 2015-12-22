@@ -51,5 +51,4 @@ Router.map(function() {
       return Documents.findOne(this.params._id);
     }
   });
-
 });
