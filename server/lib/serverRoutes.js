@@ -10,9 +10,10 @@ Router.map(function() {
       self.response.writeHead(200, {'Content-Type': 'text/html'});
 
       //Update the person's profile with gratitudes
-
+      console.log('this line: ');
       var grats = self.request.body [ "stripped-text" ]; // Mailgun does a HTTP post request and we acquire stripped-html      
       console.log(grats);
+
       grats = grats.split("\n");
       
       var email = self.request.body [ "from" ].match(/<([^>]+)>/)[1] // matches angular brackets and chooses index at one to get email sender's address

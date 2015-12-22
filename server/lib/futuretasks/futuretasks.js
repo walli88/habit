@@ -37,6 +37,7 @@ sendMail = function ( details ) {
     var gratObj = profileObj [ length - 1 ];
     var grat = gratObj.grat;
     var date = gratObj.date;
+    date = date.match(/\w+\s\w+\s\w+\s\w+/)[0];
 
     messageString += "<br><br>On " + date + ", you were grateful for: "
       + "<br><br>" + grat;
