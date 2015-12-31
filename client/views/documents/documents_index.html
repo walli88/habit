@@ -2,7 +2,33 @@
   <div class="row add-padding-top">
     <div class="col-md-12">
       <h1>Daily gratitude journal</h1>
-      <p>Welcome to your dashboard, where you can find everything that you've been grateful for in the past. From now on, we'll send an email every day, which you can reply to directly with what you're grateful for.</p>
+      <p>Welcome to your dashboard, where you can find everything that you've been grateful for in the past. From now on, we'll send an email every day, which you can reply to directly with what you're grateful for. Need to edit an entry? Just click on an entry to open it up!</p>
+      <h3>Update: 12/30/2015</h3>
+      <p>In response to a request, we're also including New Year's Resolutions here. Add a New Year's Resolution to be included with your daily gratitude journal emails.
+      </p>
+      <form name="new-resolution" class="new-resolution"><input class="resolution" type="text" name="resolution"><input type="button" value="✓" /></form>
+      <br />
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>New Year's Resolutions:</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each resolutions}}
+              <tr>
+                <td class = "inlineEditResolution">
+                <form><input type="hidden" name="hiddenfield"></form>
+                {{this}}
+                </td>
+                <td> 
+                  <a class="btn btn-xs btn-danger delete-resolution" href="#" role="button">Delete</a>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        <hr>
       <a class="btn btn-primary" href="{{pathFor 'documentNew'}}" role="button">New journal entry</a>
       <table class="table table-striped">
         <thead>

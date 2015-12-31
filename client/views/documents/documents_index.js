@@ -28,14 +28,20 @@ Template.documentsIndex.rendered = function() {
 
 
   var replaceWith = $('<input name="temp" class = "editGratEntry" type="text" />'),
+  replaceResolutionWith = $('<input name="temp" class = "editResolutionEntry" type="text" />'),
   connectWith = $('input[name="hiddenField"]');
   $('.inlineEdit').inlineEdit ( replaceWith, connectWith );
+  $('.inlineEditResolution').inlineEdit ( replaceResolutionWith, connectWith );
 };
 
 Template.documentsIndex.helpers({
 	documents: function () {
 		return Meteor.user().profile.grats;
-	}
+	},
+
+  resolutions: function () {
+    return Meteor.user().profile.resolution;
+  }
 });
 
 Template.documentsIndex.events ({
@@ -53,5 +59,29 @@ Template.documentsIndex.events ({
     var newValue = e.currentTarget.value;
     var originalValue = Session.get ( "originalValue" );
     Meteor.call ( "updateGrat", originalValue, newValue );
+  },
+
+  "submit .new-resolution": function (e) {
+    e.preventDefault();
+    var resolution = e.currentTarget.resolution.value;
+    e.currentTarget.resolution.value = "";
+    Meteor.call( "newResolution" , resolution );
+  },
+
+  "blur .editResolutionEntry": function (e) {
+    var newValue = e.currentTarget.value;
+    var originalValue = Session.get ( "originalValue" );
+    console.log(newValue);
+    console.log(originalValue);
+    Meteor.call ( "updateResolution", originalValue, newValue );
+  },
+
+  'click .delete-resolution': function (e) {
+    e.preventDefault();
+    var item = String(this);
+    if (confirm("Are you sure?")) {
+      Meteor.call ( "deleteResolution", item );
+      console.log("Deleted!");
+    }
   }
 });
