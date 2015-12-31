@@ -35,10 +35,9 @@ Meteor.users.find({_id: "CS3MvJX4Goiaqe2wA"}, { fields: {'profile': 1 } } ).fetc
 
   var messageString = "Hi," 
     + "<br><br>"
-    + "In Canada, today is Boxing Day - a holiday traditionally celebrated the day following Christmas Day, when servants and tradesmen would receive gifts, known as a 'Christmas box', from their masters, employers or customers."
-    + "Here in the U.S., we don't do this, but some of us write what we're grateful via an in-line email reply. Cultural differences!"
-    + "<br><br>"
-    + "An additional note: have you clicked at the link on the bottom? The edit and delete buttons are now fully working on your online dashboard - have at it!";
+    + "I'm happy to say that we've introduced a new feature to the Gratitude Journal - a daily reminder with your New Year's Resolutions included."
+    + "<br><br>Just go to your <a href='http://gratitudejournal.mteor.com'>dashboard</a> and add a few new year's resolutions. Your daily reminder email will now include a reminder of your resolutions. Want to dunk a basketball? Consider it done. Want to call your friends and family more often? They won't know what hit them. At the very least, if you abandon your New Year's Resolution after a few days, you'll have the burning black font of what-could-have-been staring at you for the next year or so. Possibly forever."
+    + "<br><br>As always, reply to this email with what you're grateful for."
 
   while ( length > 0 && length > originalLength - 5 ) {
     var gratObj = profileObj [ length - 1 ];
@@ -53,7 +52,7 @@ Meteor.users.find({_id: "CS3MvJX4Goiaqe2wA"}, { fields: {'profile': 1 } } ).fetc
     length = length - 1;
   };
 
-  if (profile.resolution.length != undefined ) {
+  if (profile.resolution != undefined ) {
     messageString += "<br><br>Don't forget your New Year's Resolutions: <br><br>"
 
     profileObj = profile.resolution;
@@ -72,7 +71,7 @@ Meteor.users.find({_id: "CS3MvJX4Goiaqe2wA"}, { fields: {'profile': 1 } } ).fetc
   Email.send({
     from: "The Gratitude Journal <postmaster@sandbox430629e9d36648f893dc50345e9b3c42.mailgun.org>",
     to: details.to,
-    subject: "Gratitude Journal: Boxing Day Edition",
+    subject: "Your New Year's Resolutions!",
     html: messageString
   });
 }
