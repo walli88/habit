@@ -21,7 +21,7 @@ Meteor.startup(function() {
 
   FutureTasks.find().forEach ( function ( details ) {
     //SENDMAIL should be the last agument
-    addTask( details.userId, /*'every 1 day at 3:00 AM'*/ 'every 1 day at 8:00 AM', details );
+    addTask( details.userId, /*'every 1 day at 3:00 AM'*/ 'every 1 day at 6:00 AM', details );
   });
 
   process.env.MAIL_URL='smtp://postmaster%40sandbox2f612ffff1bc4c5aa681358f40348891.mailgun.org:4278877873ed0e12f6c1e219083570bb@smtp.mailgun.org:587';
