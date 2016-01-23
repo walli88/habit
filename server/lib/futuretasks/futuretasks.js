@@ -35,9 +35,7 @@ Meteor.users.find({_id: "CS3MvJX4Goiaqe2wA"}, { fields: {'profile': 1 } } ).fetc
 
   var messageString = "Hi," 
     + "<br><br>"
-    + "I'm happy to say that we've introduced a new feature to the Gratitude Journal - a daily reminder with your New Year's Resolutions included."
-    + "<br><br>Just go to your <a href='http://gratitudejournal.mteor.com'>dashboard</a> and add a few new year's resolutions. Your daily reminder email will now include a reminder of your resolutions. Want to dunk a basketball? Consider it done. Want to call your friends and family more often? They won't know what hit them. At the very least, if you abandon your New Year's Resolution after a few days, you'll have the burning black font of what-could-have-been staring at you for the next year or so. Possibly forever."
-    + "<br><br>As always, reply to this email with what you're grateful for."
+    + "As always, reply with something that you're grateful for today."
 
   while ( length > 0 && length > originalLength - 5 ) {
     var gratObj = profileObj [ length - 1 ];
@@ -71,7 +69,7 @@ Meteor.users.find({_id: "CS3MvJX4Goiaqe2wA"}, { fields: {'profile': 1 } } ).fetc
   Email.send({
     from: "The Gratitude Journal <postmaster@sandbox430629e9d36648f893dc50345e9b3c42.mailgun.org>",
     to: details.to,
-    subject: "Your New Year's Resolutions!",
+    subject: "Your Gratitude Journal Entry",
     html: messageString
   });
 }
